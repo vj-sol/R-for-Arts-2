@@ -167,15 +167,15 @@ Providing your R <span style='display:inline;color:blue;margin-top:0'>objects</s
                 </p>
             </div>
             <div class='fragment'>
-            <p>
-              Be consistent in your naming convention, some example conventions are:
-            <ul>
-              <li>this_is_snake_case</li>
-              <li>ThisIsCamelCase</li>
-              <li>this.uses.full.stops</li>
-            </ul>
-            </p>
-          </div>
+              <p>
+                Be consistent in your naming convention, some example conventions are:
+              <ul>
+                <li>this_is_snake_case</li>
+                <li>ThisIsCamelCase</li>
+                <li>this.uses.full.stops</li>
+              </ul>
+              </p>
+            </div>
           </div>
         <aside class='notes'>
 
@@ -183,6 +183,9 @@ Providing your R <span style='display:inline;color:blue;margin-top:0'>objects</s
         </section>
 
       <section>
+        <h2 align='center'>
+          Questions?
+        </h2>
         <aside class='notes'>
 
         </aside>
@@ -190,7 +193,50 @@ Providing your R <span style='display:inline;color:blue;margin-top:0'>objects</s
 
       </section>
 
+    <!--    NEW TOP LEVEL SLIDE      -->
+    <section align='left'>
 
+      <section>
+        <h2 align='center'>
+          Session 2
+        </h2>
+        <aside class='notes'>
+        </aside>
+      </section>
+
+      <section>
+        <h3>
+          What will be covered
+        </h3>
+        <ol>
+          <li class='fragment'>Installing and using packages</li>
+          <li class='fragment'>Importing, tidying and transforming data</li>
+          <li class='fragment'>Handling and accessing data</li>
+          <li class='fragment'>Basic descriptive stats</li>
+<!--           <li class='fragment'></li> -->
+        </ol>
+      </section>
+
+      <section>
+        <h3>
+          What will NOT be covered
+        </h3>
+        <ol>
+          <li class='fragment'>Plotting data (next week)</li>
+          <li class='fragment'>Producing data reports (next week)</li>
+          <li class='fragment'>Inferential stats (eg. regressions, mixed effects models etc.)</li>
+        </ol>
+      </section>
+
+<!--       <section>
+        <h2 align='center'>
+          Session 2
+        </h2>
+        <aside class='notes'>
+        </aside>
+      </section> -->
+
+    </section>
 
     <!--    NEW TOP LEVEL SLIDE      -->
     <section align='left'>
@@ -244,13 +290,28 @@ Providing your R <span style='display:inline;color:blue;margin-top:0'>objects</s
           R for Data Science
         </h3>
         <iframe src='https://r4ds.had.co.nz/index.html' style='width:100%' class='stretch'>
-            </iframe>
+        </iframe>
         <aside class='notes'>
 
         </aside>
       </section>
 
       <section>
+        <h3>
+          Variables, Observations and Values
+        </h3>
+        <table>
+          <tr>
+            <td>Variables</td>
+            <td>Observations</td>
+            <td>Values</td>
+          </tr>
+          <tr>
+            <td>Columns</td>
+            <td>Rows</td>
+            <td>Cells</td>
+          </tr>
+        </table>
         <aside class='notes'>
 
         </aside>
@@ -264,6 +325,98 @@ Providing your R <span style='display:inline;color:blue;margin-top:0'>objects</s
 
     </section>
 
+
+
+    <!--    NEW TOP LEVEL SLIDE      -->
+    <section align='left'>
+
+      <section>
+        <h2 align='center'>
+          Exercises
+        </h2>
+        <aside class='notes'>
+
+        </aside>
+      </section>
+
+      <section>
+
+        <aside class='notes'>
+
+        </aside>
+      </section>
+
+      <section>
+
+        <aside class='notes'>
+
+        </aside>
+      </section>
+
+      <section>
+
+        <aside class='notes'>
+
+        </aside>
+      </section>
+
+      <section>
+
+        <aside class='notes'>
+
+        </aside>
+      </section>
+
+      <section>
+        <h3>
+          Project 1: Prep that data!
+        </h3>
+        <p>
+          This project is designed to mimic the process of wrangling with your own data.
+          It uses actual data from the European Union Open Data Portal and concerns the numbers of accidents at work across the EU.
+        </p>
+        <p>
+          Naturally, the first step is to acquire the data, it can be found <a href='http://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing?file=data/hsw_ph3_07.tsv.gz&unzip=true'>here</a>, save it as a .csv file in a sensible directory.
+        </p>
+        <p>
+          See the next slide for further details...
+        </p>
+
+        <aside class='notes'>
+
+        </aside>
+      </section>
+
+      <section>
+        <h3>
+          Project 1: Prep that data!
+        </h3>
+        <ol>
+          <li>Import the data into R</li>
+          <li>Reshape the data into a wide data format</li>
+          <li>What was the number of accidents in the UK?</li>
+        </ol>
+
+        <aside class='notes'>
+
+        </aside>
+      </section>
+
+      <aside class='notes'>
+        <pre><code class='r'>library(reshape2,tidyr)
+eu_data_comma <- read.csv('./R-for-Arts-2/eu-data.csv',sep=',')
+eu_data_tab <- read.csv('./R-for-Arts-2/eu-data.csv',sep='\t')
+eu_data <- cbind(eu_data_comma[1:6],eu_data_tab[2:length(eu_data_tab)])
+rm('eu_data_comma','eu_data_tab')
+eu_country <- melt(eu_data,id=c('matagent','severity','nace_r2','sex','age','unit','EU28','EU27'))
+colnames(eu_country)[9] <- 'country'
+#eu_age <- spread(eu_country, key = age, value = value)
+eu_unit <- spread(eu_country, key = unit, value = value)
+
+        </code></pre>
+
+      </aside>
+    </section>
 
 
 
@@ -292,6 +445,7 @@ Providing your R <span style='display:inline;color:blue;margin-top:0'>objects</s
       </section>
 
       <section>
+
         <aside class='notes'>
 
         </aside>

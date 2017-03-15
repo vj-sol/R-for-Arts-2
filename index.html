@@ -723,19 +723,114 @@ Recall from session 1 that a <pre style='display:inline'><code class='r' style='
     </section>
 
     <section>
+      <h2>
+        Navigating Data: 1D
+      </h2>
+      <p>
+      R uses square brackets to select elements of data objects.
+      </p>
+      <p>
+        For example, if we want to access the third element of a vector we would write the following:
+      </p>
+      <pre><code class='r'>my_vector <- c( 2 , 4 , 6 , 8 , 10)
+my_vector[3]
+#[1] 6</code></pre>
+<p>
+However, vectors only have 1 dimension and the data the we have imported has 2 dimensions.
+</p>
       <aside class='notes'>
       </aside>
     </section>
 
     <section>
+<h2>
+  Navigating Data: 2D
+      </h2>
+      <p>
+        Fortunately, the code for navigating 2-dimensional data is the same as that for 1-dimensional data.
+      </p>
+        For 2D data we simply add a comma to our command, eg: <pre style='display:inline'><code style='display:inline' class='r'>[1,3]</code></pre>
+      <p>
+        R uses the first number as an index for the row and the second number as an index for the column.
+        So, in this example we would be asking for the data element that is in row 1, column 3 of the dataset.
+      </p>
+
       <aside class='notes'>
       </aside>
     </section>
 
     <section>
+      <h3>
+        Navigating Data: 2D
+      </h3>
+      <p>
+        If we now return to our cat dataset, we can exemplify selecting data in a 2D object.
+        Our data look like this:
+      </p>
+          <pre><code class='r'>#           cat age      weight        colour loose.in.cat.room.
+#1      Pusheen   4        3.00     chocolate                 no
+#2        Felix   7        3.75         black                 no
+#3      Pumpkin  13        4.25          grey                 no
+#4 Prof. Jiggly   9        3.25 tortoiseshell                yes
+</code></pre>
+      <p>
+        If we wanted to know if Pumpkin is loose in the cat room, we would need the information contained in row 3, column 5.
+        This is coded as so:
+      </p>
+      <pre><code class='r'>demo_cats[3,5]
+#[1] no
+#Levels: no yes</code></pre>
       <aside class='notes'>
       </aside>
     </section>
+
+      <section>
+      <h3>
+        Navigating Data: Selecting entire rows/columns
+        </h3>
+        <p>
+          The same code used to access elements of a <pre style='display:inline'><code class='r' style='display:inline'>data.frame</code></pre> can also be used to select whole rows or columns.
+        This is acheived by omitting the row or column number.
+        </p>
+      <p>
+        For example, if we want to know the weights of all our cats we would need column 3 and we would write the following:
+        <pre><code class='r'>cats_demo[,3]
+#[1] 3.00 3.75 4.25 3.25
+</code></pre>
+      </p>
+
+      </section>
+
+      <section>
+      <h3>
+        Navigating Data: Selecting entire rows/columns
+        </h3>
+      <p>
+        If we wanted to get all the information about Prof. Jiggly we would need row 4 and we would write the following:
+        <pre><code class='r'>cats_demo[4,]
+#           cat age      weight        colour loose.in.cat.room.
+#4 Prof. Jiggly   9        3.25 tortoiseshell                yes
+
+</code></pre>
+      </p>
+
+      </section>
+
+      <section>
+      <h3>
+        Navigating Data: $$ bill y'all
+        </h3>
+        <pre style='display:inline'><code class='r' style='display:inline'>data.frame</code></pre>s have a feature which allows us to access a column by using its name.
+        To do this, we use the <pre style='display:inline'><code class='r' style='display:inline'>$</code></pre> operator.
+
+         For instance, to get the weight of our cats we could use the method offered 2 slides ago (ie.<pre style='display:inline'><code class='r' style='display:inline'>cats_demo[,3]</code></pre>) or we could use the following:
+
+        <pre><code class='r'>cats_demo$weight
+#[1] 3.00 3.75 4.25 3.25
+</code></pre>
+
+        Both methods return the same data but by using the <pre style='display:inline'><code class='r' style='display:inline'>$</code></pre> operator we can be more targeted in our selections.
+      </section>
 
     <aside class='notes'>
 

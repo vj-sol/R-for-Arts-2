@@ -213,7 +213,7 @@ Providing your R <span style='display:inline;color:blue;margin-top:0'>objects</s
           <li class='fragment'>Importing, tidying and transforming data</li>
           <li class='fragment'>Handling and accessing data</li>
           <li class='fragment'>Basic descriptive stats</li>
-<!--           <li class='fragment'></li> -->
+          <!--           <li class='fragment'></li> -->
         </ol>
       </section>
 
@@ -228,13 +228,13 @@ Providing your R <span style='display:inline;color:blue;margin-top:0'>objects</s
         </ol>
       </section>
 
-<!--       <section>
-        <h2 align='center'>
-          Session 2
-        </h2>
-        <aside class='notes'>
-        </aside>
-      </section> -->
+      <!--       <section>
+<h2 align='center'>
+Session 2
+</h2>
+<aside class='notes'>
+</aside>
+</section> -->
 
     </section>
 
@@ -251,159 +251,424 @@ Providing your R <span style='display:inline;color:blue;margin-top:0'>objects</s
       </section>
 
       <section>
-        <aside class='notes'>
-
-        </aside>
-      </section>
-
-      <section>
-        <aside class='notes'>
-
-        </aside>
-      </section>
-
-      <section>
-        <aside class='notes'>
-
-        </aside>
-      </section>
-
-    </section>
-
-
-
-
-    <!--    NEW TOP LEVEL SLIDE      -->
-    <section align='left'>
-
-      <section>
-        <h2 align='center'>
-          Import and Tidy data
-        </h2>
-        <aside class='notes'>
-
-        </aside>
-      </section>
-
-      <section>
         <h3>
-          R for Data Science
-        </h3>
-        <iframe src='https://r4ds.had.co.nz/index.html' style='width:100%' class='stretch'>
-        </iframe>
-        <aside class='notes'>
-
-        </aside>
-      </section>
-
-      <section>
-        <h3>
-          Variables, Observations and Values
-        </h3>
-        <table>
-          <tr>
-            <td>Variables</td>
-            <td>Observations</td>
-            <td>Values</td>
-          </tr>
-          <tr>
-            <td>Columns</td>
-            <td>Rows</td>
-            <td>Cells</td>
-          </tr>
-        </table>
-        <aside class='notes'>
-
-        </aside>
-      </section>
-
-      <section>
-        <aside class='notes'>
-
-        </aside>
-      </section>
-
-    </section>
-
-
-
-    <!--    NEW TOP LEVEL SLIDE      -->
-    <section align='left'>
-
-      <section>
-        <h2 align='center'>
-          Exercises
-        </h2>
-        <aside class='notes'>
-
-        </aside>
-      </section>
-
-      <section>
-
-        <aside class='notes'>
-
-        </aside>
-      </section>
-
-      <section>
-
-        <aside class='notes'>
-
-        </aside>
-      </section>
-
-      <section>
-
-        <aside class='notes'>
-
-        </aside>
-      </section>
-
-      <section>
-
-        <aside class='notes'>
-
-        </aside>
-      </section>
-
-      <section>
-        <h3>
-          Project 1: Prep that data!
+          Packages
         </h3>
         <p>
-          This project is designed to mimic the process of wrangling with your own data.
-          It uses actual data from the European Union Open Data Portal and concerns the numbers of accidents at work across the EU.
+          There is a package for almost everything.
         </p>
-        <p>
-          Naturally, the first step is to acquire the data, it can be found <a href='http://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing?file=data/hsw_ph3_07.tsv.gz&unzip=true'>here</a>, save it as a .csv file in a sensible directory.
+        <p class='fragment' data-fragment-index='1'>
+          There are currently <span style='color:red'>10,265</span> available packages (as of 10:25AM on 15th March 2017).
         </p>
-        <p>
-          See the next slide for further details...
+        <p class='fragment' data-fragment-index='2'>
+          A full list of all available packages can be found at:
+        <p  class='fragment' style='font-size:70%'  data-fragment-index='2'>
+          <a href='https://cran.r-project.org/web/packages/available_packages_by_date.html'>https://cran.r-project.org/web/packages/available_packages_by_date.html</a>
         </p>
-
-        <aside class='notes'>
-
-        </aside>
-      </section>
-
-      <section>
-        <h3>
-          Project 1: Prep that data!
-        </h3>
-        <ol>
-          <li>Import the data into R</li>
-          <li>Reshape the data into a wide data format</li>
-          <li>What was the number of accidents in the UK?</li>
-        </ol>
-
-        <aside class='notes'>
-
-        </aside>
-      </section>
-
+        </p>
       <aside class='notes'>
-        <pre><code class='r'>library(reshape2,tidyr)
+
+      </aside>
+    </section>
+
+    <section>
+      <h3>
+        Packages
+      </h3>
+
+        To install a package, we use the <pre style='display:inline'><code style='display:inline' class='r'>install.packages()</code></pre> command.
+
+    <p class='fragment' data-fragment-index='1'>
+      For instance, if we want to install the <a href='https://cran.r-project.org/web/packages/psych/index.html'>psych</a> package, we would use the following code: <pre class='fragment' data-fragment-index='1'><code>install.packages('psych')</code></pre>
+    </p>
+    <p class='fragment'>
+      This process only needs to be completed once, it's just like installing a program.
+    </p>
+  <p class='fragment'>
+    Note that the package name is encased in quotes.
+    This is because the CRAN server requires character information in order to match the package request against available packages.
+  </p>
+  <aside class='notes'>
+
+  </aside>
+  </section>
+
+<section>
+  <h3>
+    Packages: Admin Privileges
+  </h3>
+  <p class='fragment'>
+    Installing packages can raise issues with administrator privileges.
+  </p>
+  <p class='fragment'>
+    The <a href='https://github.com/vj-sol/R-for-Arts/raw/master/resources/installing-R.pdf'>installation instructions</a> have suggestions to circumvent this but if you are having issues please ask Vijay or Rob for help.
+  </p>
+
+  <aside class='notes'>
+
+  </aside>
+</section>
+
+<section>
+  <h3>
+    Using Packages
+  </h3>
+
+    Before we can use a package, we have to call it into our R workspace.
+    This is accomplished with the <pre style='display:inline'><code style='display:inline' class='r'>library()</code></pre> function, eg:
+
+<pre><code>library(psych)</code></pre>
+
+  Notice that here, there are no quotations.
+  This is because the package is now an object in you local R build.
+  <aside class='notes'>
+
+  </aside>
+</section>
+
+<section>
+  <h3>
+    Using Packages
+  </h3>
+
+    Every package comes with its own selection of functions that perform specific tasks.
+    For example, the psych package has the <pre style='display:inline'><code style='display:inline' class='r'>headTail</code></pre> function which helps with viewing datasets.
+
+<pre><code class='r'>headTail(mtcars)
+#                mpg cyl disp  hp drat   wt  qsec  vs  am gear carb
+#Mazda RX4        21   6  160 110  3.9 2.62 16.46   0   1    4    4
+#Mazda RX4 Wag    21   6  160 110  3.9 2.88 17.02   0   1    4    4
+#Datsun 710     22.8   4  108  93 3.85 2.32 18.61   1   1    4    1
+#Hornet 4 Drive 21.4   6  258 110 3.08 3.21 19.44   1   0    3    1
+#...             ... ...  ... ...  ...  ...   ... ... ...  ...  ...
+#Ford Pantera L 15.8   8  351 264 4.22 3.17  14.5   0   1    5    4
+#Ferrari Dino   19.7   6  145 175 3.62 2.77  15.5   0   1    5    6
+#Maserati Bora    15   8  301 335 3.54 3.57  14.6   0   1    5    8
+#Volvo 142E     21.4   4  121 109 4.11 2.78  18.6   1   1    4    2
+
+</code></pre>
+  <aside class='notes'>
+
+  </aside>
+</section>
+
+<section>
+  <h3>
+    Using Packages: Dealing with masked functions
+  </h3>
+  <p>
+  Be aware that packages sometimes use the same names for their functions and can 'mask' each other, eg:
+</p>
+<pre><code>library(dplyr)
+#Attaching package: ‘dplyr’
+#
+#The following objects are masked from ‘package:stats’:
+#
+#    filter, lag
+#
+#The following objects are masked from ‘package:base’:
+#
+#    intersect, setdiff, setequal, union
+#
+</code></pre>
+  <aside class='notes'>
+
+  </aside>
+</section>
+
+<section>
+  <h3>
+    Using Packages: Dealing with masked functions
+  </h3>
+  <p>
+    If you have masked a function that you wish to call, you can tell R which function you wish to use.
+  </p>
+
+    To do this, we use the <pre style='display:inline'><code style='display:inline' class='r'>::</code></pre> notation, eg:
+
+<pre><code class='r'>library(dplyr)
+
+#Attaching package: ‘dplyr’
+#
+#The following objects are masked from ‘package:stats’:
+#
+#    filter, lag
+#
+#The following objects are masked from ‘package:base’:
+#
+#    intersect, setdiff, setequal, union
+#
+
+filter(mtcars, cyl == 8) # Using the dplyr filter function
+
+#    mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+#1  18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+#2  14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+#3  16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+#4  17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+#5  15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+#6  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+#7  10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+#8  14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+#9  15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+#10 15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+#11 13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+#12 19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+#13 15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+#14 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+
+stats::filter( 1:100, rep( 1 , 3 )) # Using the stats filter function
+
+#Time Series:
+#Start = 1
+#End = 100
+#Frequency = 1
+#  [1]  NA   6   9  12  15  18  21  24  27  30  33  36  39  42  45  48  51  54
+# [19]  57  60  63  66  69  72  75  78  81  84  87  90  93  96  99 102 105 108
+# [37] 111 114 117 120 123 126 129 132 135 138 141 144 147 150 153 156 159 162
+# [55] 165 168 171 174 177 180 183 186 189 192 195 198 201 204 207 210 213 216
+# [73] 219 222 225 228 231 234 237 240 243 246 249 252 255 258 261 264 267 270
+# [91] 273 276 279 282 285 288 291 294 297  NA
+
+</code></pre>
+  <aside class='notes'>
+
+  </aside>
+</section>
+
+<section>
+  <h3>
+    Packages
+  </h3>
+  <p>
+    A full script for installing, loading and using a package might look something like this:
+  </p>
+  <pre><code class='r'>install.packages( 'psych' )
+library( psych )
+headTail( mtcars )
+#                mpg cyl disp  hp drat   wt  qsec  vs  am gear carb
+#Mazda RX4        21   6  160 110  3.9 2.62 16.46   0   1    4    4
+#Mazda RX4 Wag    21   6  160 110  3.9 2.88 17.02   0   1    4    4
+#Datsun 710     22.8   4  108  93 3.85 2.32 18.61   1   1    4    1
+#Hornet 4 Drive 21.4   6  258 110 3.08 3.21 19.44   1   0    3    1
+#...             ... ...  ... ...  ...  ...   ... ... ...  ...  ...
+#Ford Pantera L 15.8   8  351 264 4.22 3.17  14.5   0   1    5    4
+#Ferrari Dino   19.7   6  145 175 3.62 2.77  15.5   0   1    5    6
+#Maserati Bora    15   8  301 335 3.54 3.57  14.6   0   1    5    8
+#Volvo 142E     21.4   4  121 109 4.11 2.78  18.6   1   1    4    2
+  </code></pre>
+  <aside class='notes'>
+
+  </aside>
+</section>
+
+  <section>
+    <h3>
+      Some handy packages:
+    </h3>
+    <div style='text-size:70%'>
+    <table align='left' style='font-size:50%'>
+      <thead>
+        <tr>
+          <th></th>
+          <th>What is it?</th>
+          <th>Install</th>
+          <th>Load</th>
+        </tr>
+      </thead>
+                    <tr>
+                      <td><a href = 'https://cran.r-project.org/web/packages/psych/psych.pdf'>psych</a></td>
+                      <td>A package for personality, psychometric, and psychological research
+</td>
+                      <td><pre><code class='r'>install.packages('psych')</code></pre></td>
+                      <td><pre><code class='r'>library(psych)</code></pre></td>
+                    </tr>
+<!--                     <tr>
+                      <td>
+                        reshape2
+                      </td>
+                      <td>Makes it easy to transform data between wide and long formats.</td>
+                      <td><pre><code class='r'>install.packages('reshape2')</code></pre></td>
+                      <td><pre><code class='r'>library(reshape2)</code></pre></td>
+                    </tr> -->
+                    <tr>
+                      <td>
+                        <a href = 'https://cran.r-project.org/web/packages/dplyr/dplyr.pdf'>dplyr</a>
+                      </td>
+                      <td>A fast, consistent tool for working with data frame like objects, both in and out of memory</td>
+                      <td><pre><code class='r'>install.packages('dplyr')</code></pre></td>
+                      <td><pre><code class='r'>library(dplyr)</code></pre></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href = 'https://cran.r-project.org/web/packages/tidyr/tidyr.pdf'>tidyr</a>
+                      </td>
+                      <td>Tool designed specifically for data tidying</td>
+                      <td><pre><code class='r'>install.packages('tidyr')</code></pre></td>
+                      <td><pre><code class='r'>library(tidyr)</code></pre></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href = 'https://cran.r-project.org/web/packages/Hmisc/Hmisc.pdf'>Hmisc</a>
+                      </td>
+                      <td>Contains many functions useful for data analysis</td>
+                      <td><pre><code class='r'>install.packages('Hmisc')</code></pre></td>
+                      <td>
+                      <pre><code class='r'>library(Hmisc)</code></pre>
+                      </td>
+                    </tr>
+                    </table>
+    </div>
+    <aside class='notes'>
+
+    </aside>
+  </section>
+
+</section>
+
+
+
+
+<!--    NEW TOP LEVEL SLIDE      -->
+<section align='left'>
+
+  <section>
+    <h2 align='center'>
+      Import and Tidy data
+    </h2>
+    <aside class='notes'>
+
+    </aside>
+  </section>
+
+  <section>
+    <h3>
+      R for Data Science
+    </h3>
+    <iframe src='https://r4ds.had.co.nz/index.html' style='width:100%' class='stretch'>
+    </iframe>
+    <aside class='notes'>
+
+    </aside>
+  </section>
+
+  <section>
+    <h3>
+      Variables, Observations and Values
+    </h3>
+    <table>
+      <tr>
+        <td>Variables</td>
+        <td>Observations</td>
+        <td>Values</td>
+      </tr>
+      <tr>
+        <td>Columns</td>
+        <td>Rows</td>
+        <td>Cells</td>
+      </tr>
+    </table>
+    <aside class='notes'>
+
+    </aside>
+  </section>
+
+  <section>
+    <aside class='notes'>
+
+    </aside>
+  </section>
+
+</section>
+
+
+
+<!--    NEW TOP LEVEL SLIDE      -->
+<section align='left'>
+
+  <section>
+    <h2 align='center'>
+      Exercises
+    </h2>
+    <aside class='notes'>
+
+    </aside>
+  </section>
+
+  <section>
+    <h3>
+      Packages
+    </h3>
+
+    <aside class='notes'>
+
+    </aside>
+  </section>
+
+  <section>
+    <h3>
+      Importing data
+    </h3>
+    <aside class='notes'>
+
+    </aside>
+  </section>
+
+  <section>
+    <h3>
+      Navigating data
+    </h3>
+    <aside class='notes'>
+
+    </aside>
+  </section>
+
+  <section>
+    <h3>
+      Tidying data
+    </h3>
+    <aside class='notes'>
+
+    </aside>
+  </section>
+
+  <section>
+    <h3>
+      Project 1: Prep that data!
+    </h3>
+    <p>
+      This project is designed to mimic the process of wrangling with your own data.
+      It uses actual data from the European Union Open Data Portal and concerns the numbers of accidents at work across the EU.
+    </p>
+    <p>
+      Naturally, the first step is to acquire the data, it can be found <a href='http://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing?file=data/hsw_ph3_07.tsv.gz&unzip=true'>here</a>, save it as a .csv file in a sensible directory.
+    </p>
+    <p>
+      See the next slide for further details...
+    </p>
+
+    <aside class='notes'>
+
+    </aside>
+  </section>
+
+  <section>
+    <h3>
+      Project 1: Prep that data!
+    </h3>
+    <ol>
+      <li>Import the data into R</li>
+      <li>Reshape the data into a wide data format</li>
+      <li>What was the number of accidents in the UK?</li>
+    </ol>
+
+    <aside class='notes'>
+
+    </aside>
+  </section>
+
+  <aside class='notes'>
+    <pre><code class='r'>library(reshape2,tidyr)
 eu_data_comma <- read.csv('./R-for-Arts-2/eu-data.csv',sep=',')
 eu_data_tab <- read.csv('./R-for-Arts-2/eu-data.csv',sep='\t')
 eu_data <- cbind(eu_data_comma[1:6],eu_data_tab[2:length(eu_data_tab)])
@@ -420,41 +685,41 @@ eu_unit <- spread(eu_country, key = unit, value = value)
 
 
 
-    <!--    NEW TOP LEVEL SLIDE      -->
-    <section align='left'>
+  <!--    NEW TOP LEVEL SLIDE      -->
+  <section align='left'>
 
-      <section>
-        <h2 align='center'>
-          Next Week
-        </h2>
-        <aside class='notes'>
+    <section>
+      <h2 align='center'>
+        Next Week
+      </h2>
+      <aside class='notes'>
 
-        </aside>
-      </section>
-
-      <section>
-        <aside class='notes'>
-
-        </aside>
-      </section>
-
-      <section>
-        <aside class='notes'>
-
-        </aside>
-      </section>
-
-      <section>
-
-        <aside class='notes'>
-
-        </aside>
-      </section>
-
+      </aside>
     </section>
 
-    </div>
+    <section>
+      <aside class='notes'>
+
+      </aside>
+    </section>
+
+    <section>
+      <aside class='notes'>
+
+      </aside>
+    </section>
+
+    <section>
+
+      <aside class='notes'>
+
+      </aside>
+    </section>
+
+  </section>
+
   </div>
+</div>
 
 <script src="lib/js/head.min.js"></script>
 <script src="js/reveal.js"></script>

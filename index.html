@@ -210,8 +210,8 @@ Providing your R <span style='display:inline;color:blue;margin-top:0'>objects</s
         </h3>
         <ol>
           <li class='fragment'>Installing and using packages</li>
-          <li class='fragment'>Importing, tidying and transforming data</li>
-          <li class='fragment'>Handling and accessing data</li>
+          <li class='fragment'>Importing, navigating and tidying data</li>
+<!--           <li class='fragment'>Handling and accessing data</li> -->
           <li class='fragment'>Basic descriptive stats</li>
           <!--           <li class='fragment'></li> -->
         </ol>
@@ -227,6 +227,34 @@ Providing your R <span style='display:inline;color:blue;margin-top:0'>objects</s
           <li class='fragment'>Inferential stats (eg. regressions, mixed effects models etc.)</li>
         </ol>
       </section>
+
+      <section>
+    <h3>
+      R for Data Science
+    </h3>
+    <iframe src='http://r4ds.had.co.nz/index.html' style='width:100%' class='stretch'>
+    </iframe>
+    <aside class='notes'>
+
+    </aside>
+  </section>
+
+  <section>
+    <h3>
+      R for Data Science
+    </h3>
+    <div align='center'>
+    <img style='border:0;box-shadow:none;width:120%' src='resources/r4ds-flow.png' alt='R for Data Science work flow diagram'/>
+    </div>
+
+    <p align='right'>
+    <small>Image drawn from: <a href='http://r4ds.had.co.nz/introduction.html'>http://r4ds.had.co.nz/introduction.html</a></small>
+    </p>
+
+    <aside class='notes'>
+
+    </aside>
+  </section>
 
       <!--       <section>
 <h2 align='center'>
@@ -531,27 +559,144 @@ headTail( mtcars )
 
 <!--    NEW TOP LEVEL SLIDE      -->
 <section align='left'>
-
-  <section>
-    <h2 align='center'>
-      Import and Tidy data
+  <section align='center'>
+    <h2>
+      Importing Data
     </h2>
-    <aside class='notes'>
-
-    </aside>
   </section>
 
   <section>
     <h3>
-      R for Data Science
+      Importing data
     </h3>
-    <iframe src='http://r4ds.had.co.nz/index.html' style='width:100%' class='stretch'>
-    </iframe>
+    <p>
+      The first step of any data analysis is to load in the data.
+    </p>
+    <p>
+      R is very versatile and it is possible for it to handle most data types.
+      However, the easiest (and preferred) data format to import into R is a text file.
+    </p>
+    <p>
+      In this course, we will be working with comma separated value (.csv) files.
+    </p>
+    <p>
+      If your data is in another format (eg. .xlsx, .xls, .sav, etc.) it is often best to convert to .csv from within the associated program that created the file.
+    </p>
+      <aside class='notes'>
+
+      </aside>
+    </section>
+
+  <section>
+    <h3>
+      Importing data: .csv structure
+    </h3>
+    <p>
+      A .csv file is simply a text file with a specific structure.
+    </p>
+    <p>
+      Every row in a .csv file represents a row of data, commas separate the columns on each row, eg:
+    </p>
+    <pre><code>#cat,age,weight,colour,loose in cat room?
+#Pusheen,4,3.00,chocolate,no
+#Felix,7,3.75,black,no
+#Pumpkin,13,4.25,grey,no
+#Prof. Jiggly,9,3.25,tortoiseshell,yes</code></pre>
+    <p>
+      If this was read into R, we would have a data file that looks like this:
+    </p>
+    <pre><code class='r'>#           cat age      weight        colour loose.in.cat.room.
+#1      Pusheen   4        3.00     chocolate                 no
+#2        Felix   7        3.75         black                 no
+#3      Pumpkin  13        4.25          grey                 no
+#4 Prof. Jiggly   9        3.25 tortoiseshell                yes
+</code></pre>
+      <aside class='notes'>
+
+      </aside>
+    </section>
+
+  <section>
+    <h3>
+      Importing data: .csv structure
+    </h3>
+    <p>
+      Although csv stands for comma separated values, the actual character that separates teh columns can vary.
+      For instance, tabs are also commonly used, eg:
+    </p>
+    <pre><code>#cat   age   weight   colour   loose in cat room?
+#Pusheen   4   3.00   chocolate   no
+#Felix   7   3.75   black   no
+#Pumpkin   13   4.25   grey   no
+#Prof. Jiggly   9   3.25   tortoiseshell   yes</code></pre>
+    <p>
+  This data would be represented in R in the same way as a comma separated file as long as we tell R what the separator is.
+  </p>
+  </section>
+
+
+  <section>
+    <h3>
+      Importing data
+    </h3>
+    The command that we use to import data into R is <pre style='display:inline'><code style='display:inline'>read.table()</code></pre>, eg:
+    <pre><code>read.table( 'cats.csv' , sep = ',')</code></pre>
+    <p>
+      Note that the name of the file and the separator must be encased in quotes.
+    </p>
+    <p>
+      If the first row of our dataset contains the column headings, we need to let R know.
+    </p>
+    <pre><code>read.table( 'cats.csv' , sep = ',' , header = TRUE)</code></pre>
+      <aside class='notes'>
+
+      </aside>
+    </section>
     <aside class='notes'>
 
     </aside>
   </section>
 
+
+
+
+<!--    NEW TOP LEVEL SLIDE      -->
+<section align='left'>
+  <section align='center'>
+    <h2>
+      Navigating Data
+    </h2>
+  </section>
+    <aside class='notes'>
+
+    </aside>
+  </section>
+
+
+
+
+<!--    NEW TOP LEVEL SLIDE      -->
+<section align='left'>
+  <section align='center'>
+    <h2>
+      Tidying Data
+    </h2>
+  </section>
+  <section>
+    <h3>
+      Tidy Data
+    </h3>
+    <div align='center'>
+    <img style='border:0;box-shadow:none;width:120%' src='resources/tidy-data.png' alt='R for Data Science tidy data diagram'/>
+    </div>
+
+    <p align='right'>
+    <small>Image drawn from: <a href='http://r4ds.had.co.nz/tidy-data.html'>http://r4ds.had.co.nz/tidy-data.html</a></small>
+    </p>
+    <aside class='notes'>
+
+    </aside>
+  </section>
   <section>
     <h3>
       Variables, Observations and Values
@@ -573,13 +718,11 @@ headTail( mtcars )
     </aside>
   </section>
 
-  <section>
     <aside class='notes'>
 
     </aside>
   </section>
 
-</section>
 
 
 

@@ -1059,18 +1059,15 @@ tidy_cats <- spread( data = tidy_cats, key = food_type , value = food_consumed )
       <h3>
         Checking data
       </h3>
-      One should ALWAYS look at their data before analysing it.
-      <aside class='notes'>
-      </aside>
-    </section>
-
-    <section>
-
-      <aside class='notes'>
-      </aside>
-    </section>
-
-    <section>
+      <p>
+        One should ALWAYS look at their data before analysing it.
+      </p>
+<!--       <p>
+        The addage of Garbage In, Garbage Out applies here.
+      </p> -->
+      <p>
+        However, this can prove difficult with large datasets.
+      </p>
 
       <aside class='notes'>
       </aside>
@@ -1083,7 +1080,55 @@ tidy_cats <- spread( data = tidy_cats, key = food_type , value = food_consumed )
     </section>
 
     <section>
+      <h3>
+        Checking Data: Missing Values
+      </h3>
+      <p>
+        R will default to telling you that something is unknown rather than assuming anything.
+      </p>
+      <pre><code class='r'>a <- 2
+b <- NA
+a + b
+#[1] NA</code></pre>
+      <p>
+        Note how the output is not an integer, R is conservative and let's you know that you have missing data.
+      </p>
+      <aside class='notes'>
+      </aside>
+    </section>
 
+    <section>
+      <h3>
+        Checking Data: Missing Values
+      </h3>
+      <p>
+        You can find which data is missing by using the <pre style='display:inline'><code style='display:inline'>is.na()</code></pre> function.
+      Which
+      </p>
+      <pre><code class='r'>a <- 2
+b <- NA
+a + b
+#[1] NA</code></pre>
+      <p>
+        Note how the output is not an integer, R is conservative and let's you know that you have missing data.
+      </p>
+      <aside class='notes'>
+      </aside>
+    </section>
+
+    <section>
+
+      <aside class='notes'>
+      </aside>
+    </section>
+
+    <section>
+      <h3>
+        Selecting data: dealing with textual data
+      </h3>
+      <p>
+        <pre style='display:inline'><code style='display:inline'>stringr</code></pre>
+      </p>
       <aside class='notes'>
       </aside>
     </section>

@@ -920,7 +920,7 @@ However, vectors only have 1 dimension and the data the we have imported has 2 d
         First, let's group the months.
       </p>
 
-      Hadley wickham has a particularly handy package called <pre style='display:inline'><code style='display:inline' class='r'>tidyr</code></pre> that is useful here.
+      Hadley Wickham has a particularly handy package called <pre style='display:inline'><code style='display:inline' class='r'>tidyr</code></pre> that is useful here.
       To do this, we will be using the <pre style='display:inline'><code style='display:inline' class='r'>gather()</code></pre> function from this package.
 
       <pre><code class='r'>library(tidyr)
@@ -1098,7 +1098,7 @@ tidy_cats <- spread( data = tidy_cats, key = food_type , value = food_consumed )
       <p>
         RQ: What is the mean amount of dry cat food eaten across all cats and all months?
       </p>
-      <pre><code>mean(tidy_cats$dry)
+      <pre><code class='r'>mean(tidy_cats$dry)
 #[1] 3333.333</code></pre>
       <aside class='notes'>
       </aside>
@@ -1111,7 +1111,7 @@ tidy_cats <- spread( data = tidy_cats, key = food_type , value = food_consumed )
       <p>
         RQ: What is the median amount of dry cat food eaten across all cats and all months?
       </p>
-      <pre><code>median(tidy_cats$dry)
+      <pre><code class='r'>median(tidy_cats$dry)
 #[1] 3250</code></pre>
       <aside class='notes'>
       </aside>
@@ -1124,12 +1124,12 @@ tidy_cats <- spread( data = tidy_cats, key = food_type , value = food_consumed )
       <p>
         RQ: What is the mode amount of dry cat food eaten across all cats and all months?
       </p>
-      <pre><code>cat_dry_table <- table(tidy_cats$dry)
-cat_dry_table
+      <pre><code class='r'>cats_dry_table <- table(tidy_cats$dry)
+cats_dry_table
 #1000 2000 2500 3000 3500 4000 5000 5500
 #   1    1    2    2    1    3    1    1
-cat_dry_mode <- cat_dry_table[ cat_dry_table == max( cat_dry_table ) ]
-as.integer( names( cat_dry_mode ) )
+cats_dry_mode <- cats_dry_table[ cats_dry_table == max( cats_dry_table ) ]
+as.integer( names( cats_dry_mode ) )
 #4000
 </code></pre>
       <aside class='notes'>
@@ -1140,6 +1140,11 @@ as.integer( names( cat_dry_mode ) )
       <h3>
         Descriptives: Range
       </h3>
+      <p>
+        RQ: What is the range in the ampunt dry cat food eaten across all cats and all months?
+      </p>
+      <pre><code class='r'>max(tidy_cats$dry) - min(tidy_cats$dry)
+#[1] 4500</code></pre>
       <aside class='notes'>
       </aside>
     </section>
@@ -1148,6 +1153,11 @@ as.integer( names( cat_dry_mode ) )
       <h3>
         Descriptives: Interquartile Range
       </h3>
+      <p>
+        RQ: What is the interquartilerange for the amount dry cat food eaten across all cats and all months?
+      </p>
+      <pre><code class='r'>IQR(tidy_cats$dry)
+#[1] 1500</code></pre>
       <aside class='notes'>
       </aside>
     </section>
@@ -1156,6 +1166,30 @@ as.integer( names( cat_dry_mode ) )
       <h3>
         Descriptives: Standard Deviation
       </h3>
+      <p>
+        RQ: What is the standard deviation for the amount dry cat food eaten across all cats and all months?
+      </p>
+      <pre><code class='r'>sd( tidy_cats$dry )
+#[1] 1267.304</code></pre>
+      <aside class='notes'>
+      </aside>
+    </section>
+
+        <section>
+      <h3>
+        Descriptives: Do it in a oner
+      </h3>
+      <p>
+        RQ: What are the descriptives for the tidy_cats dataset?
+      </p>
+      <pre><code class='r'>summary(tidy_cats)
+#          Name      Month                dry            wet
+#Millie      :3   Length:12          Min.   :1000   Min.   :   0
+#Prof. Jiggly:3   Class :character   1st Qu.:2500   1st Qu.:1875
+#Pumpkin     :3   Mode  :character   Median :3250   Median :2250
+#Pusheen     :3                      Mean   :3333   Mean   :2250
+#                                   3rd Qu.:4000   3rd Qu.:3000
+#                                   Max.   :5500   Max.   :4000  </code></pre>
       <aside class='notes'>
       </aside>
     </section>

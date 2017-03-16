@@ -942,7 +942,7 @@ tidy_cats
 #12       Millie       wet   Feb          2000
 #13      Pumpkin       dry   Feb          5500
 #14      Pumpkin       wet   Feb          2500
-#15 Prof. Jiggly       dry   Feb          4500
+#15 Prof. Jiggly       dry   Feb          4000
 #16 Prof. Jiggly       wet   Feb          1000
 #17      Pusheen       dry   Mar          2500
 #18      Pusheen       wet   Mar          2000
@@ -978,7 +978,7 @@ tidy_cats <- spread( data = tidy_cats, key = food_type , value = food_consumed )
 #1        Millie   Feb 3000 2000
 #2        Millie   Jan 1000 4000
 #3        Millie   Mar 2000 3000
-#4  Prof. Jiggly   Feb 4500 1000
+#4  Prof. Jiggly   Feb 4000 1000
 #5  Prof. Jiggly   Jan 5000    0
 #6  Prof. Jiggly   Mar 4000 1500
 #7       Pumpkin   Feb 5500 2500
@@ -1092,6 +1092,14 @@ tidy_cats <- spread( data = tidy_cats, key = food_type , value = food_consumed )
       <h3>
         Descriptives: Mean
       </h3>
+      <p>
+        Let's return to our cat data to calculate a mean.
+      </p>
+      <p>
+        RQ: What is the mean amount of dry cat food eaten across all cats and all months?
+      </p>
+      <pre><code>mean(tidy_cats$dry)
+#[1] 3333.333</code></pre>
       <aside class='notes'>
       </aside>
     </section>
@@ -1100,6 +1108,11 @@ tidy_cats <- spread( data = tidy_cats, key = food_type , value = food_consumed )
       <h3>
         Descriptives: Median
       </h3>
+      <p>
+        RQ: What is the median amount of dry cat food eaten across all cats and all months?
+      </p>
+      <pre><code>median(tidy_cats$dry)
+#[1] 3250</code></pre>
       <aside class='notes'>
       </aside>
     </section>
@@ -1108,6 +1121,17 @@ tidy_cats <- spread( data = tidy_cats, key = food_type , value = food_consumed )
       <h3>
         Descriptives: Mode
       </h3>
+      <p>
+        RQ: What is the mode amount of dry cat food eaten across all cats and all months?
+      </p>
+      <pre><code>cat_dry_table <- table(tidy_cats$dry)
+cat_dry_table
+#1000 2000 2500 3000 3500 4000 5000 5500
+#   1    1    2    2    1    3    1    1
+cat_dry_mode <- cat_dry_table[ cat_dry_table == max( cat_dry_table ) ]
+as.integer( names( cat_dry_mode ) )
+#4000
+</code></pre>
       <aside class='notes'>
       </aside>
     </section>

@@ -224,7 +224,7 @@ Providing your R <span style='display:inline;color:blue;margin-top:0'>objects</s
         <ol>
           <li class='fragment'>Plotting data (next week)</li>
           <li class='fragment'>Producing data reports (next week)</li>
-          <li class='fragment'>Inferential stats (eg. regressions, mixed effects models etc.)</li>
+          <li class='fragment'>Inferential stats (e.g. regressions, mixed effects models etc.)</li>
         </ol>
       </section>
 
@@ -310,7 +310,7 @@ Session 2
         For instance, if we want to install the <a href='https://cran.r-project.org/web/packages/psych/index.html'>psych</a> package, we would use the following code: <pre class='fragment' data-fragment-index='1'><code class='r'>install.packages('psych')</code></pre>
       </p>
     <p class='fragment'>
-      This process only needs to be completed once, it's just like installing a program.
+      This process only needs to be completed once, just like installing a program.
     </p>
     <p class='fragment'>
       Note that the package name is encased in quotes.
@@ -343,7 +343,7 @@ Session 2
     </h3>
 
     Before we can use a package, we have to call it into our R workspace.
-    This is accomplished with the <pre style='display:inline'><code style='display:inline' class='r'>library()</code></pre> function, eg:
+    This is accomplished with the <pre style='display:inline'><code style='display:inline' class='r'>library()</code></pre> function, e.g.:
 
     <pre><code class='r'>library(psych)</code></pre>
 
@@ -362,7 +362,7 @@ Session 2
     Every package comes with its own selection of functions that perform specific tasks.
     For example, the psych package has the <pre style='display:inline'><code style='display:inline' class='r'>headTail()</code></pre> function which helps with viewing datasets.
 
-    <pre><code class='r'>headTail(mtcars)
+    <pre><code class='r'>headTail(mtcars) # mtcars is a built-in dataset. Use data() to list all available datasets.
 #                mpg cyl disp  hp drat   wt  qsec  vs  am gear carb
 #Mazda RX4        21   6  160 110  3.9 2.62 16.46   0   1    4    4
 #Mazda RX4 Wag    21   6  160 110  3.9 2.88 17.02   0   1    4    4
@@ -385,7 +385,7 @@ Session 2
       Using Packages: Dealing with masked functions
     </h3>
     <p>
-      Be aware that packages sometimes use the same names for their functions and can 'mask' each other, eg:
+      Be aware that packages sometimes use the same names for their functions and can 'mask' each other, e.g.:
     </p>
     <pre><code>library(dplyr)
 #Attaching package: ‘dplyr’
@@ -412,7 +412,7 @@ Session 2
       If you have masked a function that you wish to call, you can tell R which function you wish to use.
     </p>
 
-    To do this, we use the <pre style='display:inline'><code style='display:inline' class='r'>::</code></pre> notation, eg:
+    To do this, we use the <pre style='display:inline'><code style='display:inline' class='r'>::</code></pre> notation, e.g.:
 
     <pre><code class='r'>library(dplyr)
 
@@ -523,7 +523,7 @@ reshape2
           <td>
             <a href = 'https://cran.r-project.org/web/packages/dplyr/dplyr.pdf'>dplyr</a>
           </td>
-          <td>A fast, consistent tool for working with data frame like objects, both in and out of memory</td>
+          <td>A fast, consistent tool for working with data frame like objects.</td>
           <td><pre><code class='r'>install.packages('dplyr')</code></pre></td>
           <td><pre><code class='r'>library(dplyr)</code></pre></td>
         </tr>
@@ -580,7 +580,7 @@ reshape2
       In this course, we will be working with comma separated value (.csv) files.
     </p>
     <p>
-      If your data is in another format (eg. .xlsx, .xls, .sav, etc.) it is often best to convert to .csv from within the associated program that created the file.
+      If your data is in another format (e.g. .xlsx, .xls, .sav, etc.) it is often best to convert to .csv from within the associated program that created the file.
     </p>
     <p>
       If conversion is not possible, some alternative import options are offered <a href='http://www.statmethods.net/input/importingdata.html'>here</a>.
@@ -598,12 +598,13 @@ reshape2
       A .csv file is simply a text file with a specific structure.
     </p>
     <p style='font-size:70%'>
-      Every row in a .csv file represents a row of data, commas separate the columns on each row.
+      Every row in a .csv file represents a row of data with commas separating the columns on each row.
     </p>
     <p style='font-size:70%'>
-      We have a mock .csv file about cats (available <a href='http://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/cats.csv'>here</a>), it looks like this:
+      We have a mock .csv file about cats (available <a href='http://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/cats.csv'>here</a>).
+      It looks like this:
     </p>
-    <pre><code>#cat,age,weight,colour,loose in cat room?
+    <pre><code>#cat,age,weight,colour,loose.in.cat.room
 #Pusheen,4,3.00,chocolate,no
 #Millie,7,3.75,black,no
 #Pumpkin,13,4.25,grey,no
@@ -627,8 +628,8 @@ reshape2
       Importing data: .csv structure
     </h3>
     <p>
-      Although csv stands for comma separated values, the actual character that separates teh columns can vary.
-      For instance, tabs are also commonly used, eg:
+      Although csv stands for comma separated values, the actual character that separates the columns can vary.
+      For instance, tabs are also commonly used, e.g.:
     </p>
     <pre><code>#cat   age   weight   colour   loose in cat room?
 #Pusheen   4   3.00   chocolate   no
@@ -645,7 +646,7 @@ reshape2
     <h3>
       Importing data
     </h3>
-    The command that we use to import data into R is <pre style='display:inline'><code style='display:inline'>read.table()</code></pre>, eg:
+    The command that we use to import data into R is <pre style='display:inline'><code style='display:inline'>read.table()</code></pre>, e.g.:
     <pre><code>read.table( 'cats.csv' , sep = ',')</code></pre>
     <p>
       Note that the name of the file and the separator must be encased in quotes.
@@ -749,7 +750,7 @@ However, vectors only have 1 dimension and the data the we have imported has 2 d
             <p>
               Fortunately, the code for navigating 2-dimensional data is the same as that for 1-dimensional data.
             </p>
-            For 2D data we simply add a comma to our command, eg: <pre style='display:inline'><code style='display:inline' class='r'>[1,3]</code></pre>
+            For 2D data we simply add a comma to our command, e.g.: <pre style='display:inline'><code style='display:inline' class='r'>[1,3]</code></pre>
             <p>
               R uses the first number as an index for the row and the second number as an index for the column.
               So, in this example we would be asking for the data element that is in row 1, column 3 of the dataset.
@@ -764,7 +765,7 @@ However, vectors only have 1 dimension and the data the we have imported has 2 d
               Navigating Data: 2D
             </h3>
             <p>
-              If we now return to our cat dataset, we can exemplify selecting data in a 2D object.
+              If we now return to our cat dataset, we can try selecting data in a 2D object.
               Our data look like this:
             </p>
             <pre><code class='r'>#           cat age      weight        colour loose.in.cat.room.
@@ -823,7 +824,7 @@ However, vectors only have 1 dimension and the data the we have imported has 2 d
       <pre style='display:inline'><code class='r' style='display:inline'>data.frame</code></pre>s have a feature which allows us to access a column by using its name.
       To do this, we use the <pre style='display:inline'><code class='r' style='display:inline'>$</code></pre> operator.
 
-      For instance, to get the weight of our cats we could use the method offered 2 slides ago (ie.<pre style='display:inline'><code class='r' style='display:inline'>cats_demo[,3]</code></pre>) or we could use the following:
+      For instance, to get the weight of our cats we could use the method offered 2 slides ago (i.e.<pre style='display:inline'><code class='r' style='display:inline'>cats_demo[,3]</code></pre>) or we could use the following:
 
       <pre><code class='r'>cats_demo$weight
 #[1] 3.00 3.75 4.25 3.25
@@ -878,7 +879,7 @@ However, vectors only have 1 dimension and the data the we have imported has 2 d
       </p>
       <p>
         Let's return to our cats to exemplify this.
-        Here we have food consumption data for our cats over a 3-month period, all values are in grams.
+        Here we have food consumption data for our cats over a 3-month period, with all values in grams.
         You can find this data <a href='https://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/cat-food.csv'>here</a>
       </p>
       <pre><code>cat_food
@@ -1022,7 +1023,7 @@ tidy_cats <- spread( data = tidy_cats, key = food_type , value = food_consumed )
               <pre style='display:inline'><code style='display:inline' class='r'>unite()</code></pre>
             </td>
             <td>
-              Turns a single character column into multiple columns.
+              Turns multiple columns into one.
             </td>
           </tr>
           <tr>
@@ -1082,7 +1083,7 @@ The addage of Garbage In, Garbage Out applies here.
           Checking data: Complete cases
         </h3>
         <!--       <p> -->
-        If there was a missing observation in the data, the function would have returned a <pre style='display:inline'><code style='display:inline' class'r'>FALSE</code></pre> value for the incomplete row, eg:
+        If there was a missing observation in the data, the function would have returned a <pre style='display:inline'><code style='display:inline' class'r'>FALSE</code></pre> value for the incomplete row, e.g.:
         <pre><code class='r'>tidy_cats$Month[1] <- NA
 tidy_cats
 #           Name Month  dry  wet
@@ -1117,11 +1118,11 @@ complete.cases(tidy_cats)
           R will default to telling you that something is unknown rather than assuming anything.
           </p>
           <pre><code class='r'>a <- 2
-          b <- NA
-          a + b
-          #[1] NA</code></pre>
+b <- NA
+a + b
+#[1] NA</code></pre>
           <p>
-          Note how the output is not an integer, R is conservative and let's you know that you have missing data.
+          Note how the output is not an integer, R is conservative and lets you know that you have missing data.
           </p>
           <aside class='notes'>
           </aside>
@@ -1261,7 +1262,7 @@ Note how the output is not an integer, R is conservative and let's you know that
             Selecting Data
           </h3>
           <p>
-            What about the data for those cats that eat at no more than 1000 grams of dry food a month.
+            What about the data for those cats that eat no more than 1000 grams of dry food a month.
           </p>
           <div class='fragment'>
             <pre><code class='r'>tidy_cats[ tidy_cats$dry &lt;= 1000 , ]
@@ -1470,7 +1471,7 @@ as.integer( names( cats_dry_mode ) )
           Descriptives: Range
         </h3>
         <p>
-          RQ: What is the range in the amount dry cat food eaten across all cats and all months?
+          RQ: What is the range in the amount of dry cat food eaten across all cats and all months?
         </p>
         <pre><code class='r'>max(tidy_cats$dry) - min(tidy_cats$dry)
 #[1] 4500</code></pre>
@@ -1483,7 +1484,7 @@ as.integer( names( cats_dry_mode ) )
           Descriptives: Interquartile Range
         </h3>
         <p>
-          RQ: What is the interquartile range for the amount dry cat food eaten across all cats and all months?
+          RQ: What is the interquartile range for the amount of dry cat food eaten across all cats and all months?
         </p>
         <pre><code class='r'>IQR(tidy_cats$dry)
 #[1] 1500</code></pre>
@@ -1496,7 +1497,7 @@ as.integer( names( cats_dry_mode ) )
           Descriptives: Standard Deviation
         </h3>
         <p>
-          RQ: What is the standard deviation for the amount dry cat food eaten across all cats and all months?
+          RQ: What is the standard deviation for the amount of dry cat food eaten across all cats and all months?
         </p>
         <pre><code class='r'>sd( tidy_cats$dry )
 #[1] 1267.304</code></pre>

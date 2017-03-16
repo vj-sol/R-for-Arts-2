@@ -1207,6 +1207,28 @@ Note how the output is not an integer, R is conservative and let's you know that
         </aside>
       </section>
 
+         <section>
+        <h3>
+          Selecting Data
+        </h3>
+        <p>
+          What if we wanted the data for all months except March?.
+        </p>
+        <pre><code class='r'>tidy_cats[ tidy_cats$Month != 'Mar' , ]
+#           Name Month  dry  wet
+#1        Millie   Feb 3000 2000
+#2        Millie   Jan 1000 4000
+#4  Prof. Jiggly   Feb 4000 1000
+#5  Prof. Jiggly   Jan 5000    0
+#7       Pumpkin   Feb 5500 2500
+#8       Pumpkin   Jan 4000 2000
+#10      Pusheen   Feb 3000 3000
+#11      Pusheen   Jan 2500 3000
+</code></pre>
+        <aside class='notes'>
+        </aside>
+      </section>
+
       <section>
         <h3>
           Selecting Data
@@ -1241,6 +1263,7 @@ Note how the output is not an integer, R is conservative and let's you know that
         <aside class='notes'>
         </aside>
       </section>
+
 
       <section>
 

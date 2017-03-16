@@ -307,7 +307,7 @@ Session 2
       To install a package, we use the <pre style='display:inline'><code style='display:inline' class='r'>install.packages()</code></pre> command.
 
       <p class='fragment' data-fragment-index='1'>
-        For instance, if we want to install the <a href='https://cran.r-project.org/web/packages/psych/index.html'>psych</a> package, we would use the following code: <pre class='fragment' data-fragment-index='1'><code>install.packages('psych')</code></pre>
+        For instance, if we want to install the <a href='https://cran.r-project.org/web/packages/psych/index.html'>psych</a> package, we would use the following code: <pre class='fragment' data-fragment-index='1'><code class='r'>install.packages('psych')</code></pre>
       </p>
     <p class='fragment'>
       This process only needs to be completed once, it's just like installing a program.
@@ -329,7 +329,7 @@ Session 2
       Installing packages can raise issues with administrator privileges.
     </p>
     <p class='fragment'>
-      The <a href='https://github.com/vj-sol/R-for-Arts/raw/master/resources/installing-R.pdf'>installation instructions</a> have suggestions to circumvent this but if you are having issues please ask Vijay or Rob for help.
+      The <a href='https://github.com/vj-sol/R-for-Arts/raw/master/resources/installing-R.pdf'>installation instructions</a> have suggestions to circumvent this but if you are having issues please ask Vijay or Robert for help.
     </p>
 
     <aside class='notes'>
@@ -345,7 +345,7 @@ Session 2
     Before we can use a package, we have to call it into our R workspace.
     This is accomplished with the <pre style='display:inline'><code style='display:inline' class='r'>library()</code></pre> function, eg:
 
-    <pre><code>library(psych)</code></pre>
+    <pre><code class='r'>library(psych)</code></pre>
 
     Notice that here, there are no quotations.
     This is because the package is now an object in you local R build.
@@ -360,7 +360,7 @@ Session 2
     </h3>
 
     Every package comes with its own selection of functions that perform specific tasks.
-    For example, the psych package has the <pre style='display:inline'><code style='display:inline' class='r'>headTail</code></pre> function which helps with viewing datasets.
+    For example, the psych package has the <pre style='display:inline'><code style='display:inline' class='r'>headTail()</code></pre> function which helps with viewing datasets.
 
     <pre><code class='r'>headTail(mtcars)
 #                mpg cyl disp  hp drat   wt  qsec  vs  am gear carb
@@ -1291,7 +1291,7 @@ Note how the output is not an integer, R is conservative and let's you know that
 
       <section>
         <h3>
-          Selecting data: dealing with textual data
+          Selecting data: dealing with text
         </h3>
         R handles character (or 'string') data in a similar way to vectors.
         However, there are some quirks and the <a href='https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html'>stringr</a> package helps us to dealwith these quirks.
@@ -1579,7 +1579,16 @@ describe(tidy_cats)
         <h3>
           Packages
         </h3>
-
+<p>
+  Vist <a href='https://cran.r-project.org/web/packages/available_packages_by_date.html'>https://cran.r-project.org/web/packages/available_packages_by_date.html</a> and search for a package that you might find useful.
+  Once you have found a package, do the following:
+        </p>
+        <ol>
+          <li>Install it</li>
+          <li>Load it into your R workspace</li>
+          <li>Use the help function to learn more about the package</li>
+          <li>Try using one of the package's functions (if you need a test dataset, R has some built in. Use <pre style='display:inline'><code style='display:inline' class='r'>data()</code></pre> to see what is available.)</li>
+        </ol>
         <aside class='notes'>
 
         </aside>
@@ -1587,8 +1596,34 @@ describe(tidy_cats)
 
       <section>
         <h3>
+          Packages
+        </h3>
+        <ol start='5'>
+          <li>How would you specify that you wanted to specifically use the <pre style='display:inline'><code style='display:inline' class='r'>alpha()</code></pre> function from the psych package?</li>
+          <li>Do you need to install a package each time you want to use it?</li>
+          <li>Would it be important to include an <pre style='display:inline'><code style='display:inline' class='r'>install.packages()</code></pre> command in a script that you were sharing? Why?</li>
+        </ol>
+      </section>
+
+      <section>
+        <h3>
           Importing data
         </h3>
+        <ol>
+          <li>What types of data can R handle?</li>
+          <li>What is the preferred data format and what is its structure?</li>
+          <li>When importing data, what is meant by the term 'separator'?</li>
+          <li>Investigate the <pre style='display:inline'><code style='display:inline' class='r'>read.table()</code></pre> command. What additional functionality does it have?</li>
+        </ol>
+      </section>
+          <section>
+        <h3>
+          Importing data
+        </h3>
+            <ol start='5'>
+          <li>Using the <pre style='display:inline'><code style='display:inline' class='r'>read.table()</code></pre></li> function, read in the dataset at the following location <a href='http://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/cats.csv'>http://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/cats.csv</a> and assign it to an object.
+          <li>Using the <pre style='display:inline'><code style='display:inline' class='r'>read.csv()</code></pre></li> function, read in the dataset at the following location <a href='http://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/cat-food.csv'>http://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/cat-food.csv</a> and assign it to another object.
+        </ol>
         <aside class='notes'>
 
         </aside>
@@ -1598,6 +1633,50 @@ describe(tidy_cats)
         <h3>
           Navigating data
         </h3>
+        <ol>
+          <li>What type of brackets are used to extract data from a 1 dimensional object in R?</li>
+          <li>What type of brackets are used to extract data from a 2 dimensional object in R?</li>
+          <li>What type of operator can be used to extract columns from a <pre style='display:inline'><code style='display:inline' class='r'>data.frame</code></pre>?</li>
+        </ol>
+          </section>
+
+        <section>
+          <h3>
+          Navigating data
+        </h3>
+          <ol start='5'>
+          <li>For the vector <pre style='display:inline'><code style='display:inline' class='r'>my_vect <- c(23 , 49 , 567 , 32 , 90)</code></pre> predict what the result of the folloeing code will be:
+            <ol>
+            <li type='a'><pre style='display:inline'><code style='display:inline' class='r'>my_vect[4]</code></pre></li>
+            <li type='a'><pre style='display:inline'><code style='display:inline' class='r'>my_vect[-2]</code></pre></li>
+            <li type='a'><pre style='display:inline'><code style='display:inline' class='r'>my_vect[6]</code></pre></li>
+            <li type='a'><pre style='display:inline'><code style='display:inline' class='r'>my_Vect[2]</code></pre></li>
+            <li type='a'><pre style='display:inline'><code style='display:inline' class='r'>my_vect[4,]</code></pre></li>
+            </ol>
+          </li>
+        </ol>
+        <aside class='notes'>
+
+        </aside>
+      </section>
+
+      <section>
+          <h3>
+          Navigating data
+        </h3>
+          <ol start='6'>
+          <li>For the cats data that you imported using <pre style='display:inline'><code style='display:inline' class='r'>read.table()</code></pre>, do the following:
+            <ol>
+            <li type='a'></li>
+              <li type='a'></li>
+              <li type='a'></li>
+            <li type='a'><pre style='display:inline'><code style='display:inline' class='r'>my_vect[-2]</code></pre></li>
+            <li type='a'><pre style='display:inline'><code style='display:inline' class='r'>my_vect[6]</code></pre></li>
+            <li type='a'><pre style='display:inline'><code style='display:inline' class='r'>my_Vect[2]</code></pre></li>
+            <li type='a'><pre style='display:inline'><code style='display:inline' class='r'>my_vect[4,]</code></pre></li>
+            </ol>
+          </li>
+        </ol>
         <aside class='notes'>
 
         </aside>

@@ -876,7 +876,23 @@ However, vectors only have 1 dimension and the data the we have imported has 2 d
       <p>
         Datasets come in a dizzying array of different formats and not all of them will be tidy.
       </p>
-      <table>
+      <p>
+        Let's return to our cats to exemplify this.
+        Here we have food consumption data for our cats over a 3-month period, all values are in grams.
+        You can find this data <a href='https://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/cat-food.csv'>here</a>
+      </p>
+      <pre><code>cat_food
+#          Name food_type  Jan  Feb  Mar
+#1      Pusheen       dry 2500 3000 2500
+#2      Pusheen       wet 3000 3000 2000
+#3       Millie       dry 1000 3000 2000
+#4       Millie       wet 4000 2000 3000
+#5      Pumpkin       dry 4000 5500 3500
+#6      Pumpkin       wet 2000 2500 3000
+#7 Prof. Jiggly       dry 5000 4500 4000
+#8 Prof. Jiggly       wet    0 1000 1500
+</code></pre>
+<!--       <table>
         <tr>
           <td>Variables</td>
           <td>Observations</td>
@@ -887,16 +903,146 @@ However, vectors only have 1 dimension and the data the we have imported has 2 d
           <td>Rows</td>
           <td>Cells</td>
         </tr>
-      </table>
+      </table> -->
+      <p>
+        Does this data adhere to the tidy data format?
+      </p>
       <aside class='notes'>
 
       </aside>
     </section>
 
+    <section>
+      <h3>
+        Tidy Data
+      </h3>
+      <p>
+        First, let's group the months.
+      </p>
+
+      Hadley wickham has a particularly handy package called <pre style='display:inline'><code style='display:inline' class='r'>tidyr</code></pre> that is useful here.
+      To do this, we will be using the <pre style='display:inline'><code style='display:inline' class='r'>gather()</code></pre> function from this package.
+
+      <pre><code class='r'>library(tidyr)
+cat_food <- read.csv( 'https://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/cat-food.csv' , header = T )
+tidy_cats <- gather( data = cat_food, Jan , Feb , Mar , key = Month, value = food_consumed )
+tidy_cats
+#           Name food_type Month food_consumed
+#1       Pusheen       dry   Jan          2500
+#2       Pusheen       wet   Jan          3000
+#3        Millie       dry   Jan          1000
+#4        Millie       wet   Jan          4000
+#5       Pumpkin       dry   Jan          4000
+#6       Pumpkin       wet   Jan          2000
+#7  Prof. Jiggly       dry   Jan          5000
+#8  Prof. Jiggly       wet   Jan             0
+#9       Pusheen       dry   Feb          3000
+#10      Pusheen       wet   Feb          3000
+#11       Millie       dry   Feb          3000
+#12       Millie       wet   Feb          2000
+#13      Pumpkin       dry   Feb          5500
+#14      Pumpkin       wet   Feb          2500
+#15 Prof. Jiggly       dry   Feb          4500
+#16 Prof. Jiggly       wet   Feb          1000
+#17      Pusheen       dry   Mar          2500
+#18      Pusheen       wet   Mar          2000
+#19       Millie       dry   Mar          2000
+#20       Millie       wet   Mar          3000
+#21      Pumpkin       dry   Mar          3500
+#22      Pumpkin       wet   Mar          3000
+#23 Prof. Jiggly       dry   Mar          4000
+#24 Prof. Jiggly       wet   Mar          1500
+
+</code></pre>
+    </section>
+
     <aside class='notes'>
 
     </aside>
+
+     <section>
+      <h3>
+        Tidy Data
+      </h3>
+<!--       <p> -->
+        Now, let's separate the food types.
+        To do this, we will be using the <pre style='display:inline'><code style='display:inline' class='r'>spread()</code></pre> function from this package.
+<!--       </p> -->
+  <p>
+    Data is carried over from the previous slide.
+  </p>
+
+      <pre><code class='r'>library(tidyr)
+tidy_cats <- spread( data = tidy_cats, key = food_type , value = food_consumed )
+#           Name Month  dry  wet
+#1        Millie   Feb 3000 2000
+#2        Millie   Jan 1000 4000
+#3        Millie   Mar 2000 3000
+#4  Prof. Jiggly   Feb 4500 1000
+#5  Prof. Jiggly   Jan 5000    0
+#6  Prof. Jiggly   Mar 4000 1500
+#7       Pumpkin   Feb 5500 2500
+#8       Pumpkin   Jan 4000 2000
+#9       Pumpkin   Mar 3500 3000
+#10      Pusheen   Feb 3000 3000
+#11      Pusheen   Jan 2500 3000
+#12      Pusheen   Mar 2500 2000
+
+</code></pre>
+    </section>
+
+       <section>
+         <h3>
+           Tidy data
+         </h3>
+         The <pre style='display:inline'><code style='display:inline' class='r'>tidyr</code></pre> package has a number of useful functions for tidying data.
+         Please do explore them for yourselves.
+         <br/>
+         <table>
+           <thead>
+             <tr>
+               <th>
+                 Function
+               </th>
+               <th>
+                 Purpose
+               </th>
+             </tr>
+           </thead>
+           <tr>
+             <td>
+               <pre style='display:inline'><code style='display:inline' class='r'>separate()</code></pre>
+             </td>
+             <td>
+               Turns a single character column into multiple columns.
+             </td>
+           </tr>
+           <tr>
+             <td>
+               <pre style='display:inline'><code style='display:inline' class='r'>unite()</code></pre>
+             </td>
+             <td>
+               Turns a single character column into multiple columns.
+             </td>
+           </tr>
+           <tr>
+             <td>
+               <pre style='display:inline'><code style='display:inline' class='r'>complete()</code></pre>
+             </td>
+             <td>
+               Turns implicit missing values into explicit missing values.
+             </td>
+           </tr>
+         </table>
+       </section>
+
   </section>
+
+
+<!--     <aside class='notes'>
+
+    </aside>
+  </section> -->
 
 
 
@@ -905,7 +1051,7 @@ However, vectors only have 1 dimension and the data the we have imported has 2 d
   <section align='left'>
     <section>
       <h2 align='center'>
-        Checking Data
+        Checking and selecting Data
       </h2>
     </section>
     <aside class='notes'>
@@ -922,6 +1068,20 @@ However, vectors only have 1 dimension and the data the we have imported has 2 d
         Descriptives
       </h2>
     </section>
+
+    <section>
+      <h3>
+        Descriptives
+      </h3>
+      <p>
+        Descriptive statistics do what they say on the tin.
+        They <span style='color:red'>describe</span> your data.
+      </p>
+      <p>
+        These statistics include things such as the mean, median, mode, range, interquartile range, standard deviation and standard error.
+      </p>
+    </section>
+
     <aside class='notes'>
     </aside>
     </section>

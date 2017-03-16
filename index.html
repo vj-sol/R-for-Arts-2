@@ -1054,6 +1054,40 @@ tidy_cats <- spread( data = tidy_cats, key = food_type , value = food_consumed )
         Checking and selecting Data
       </h2>
     </section>
+
+    <section>
+      <h3>
+        Checking data
+      </h3>
+      One should ALWAYS look at their data before analysing it.
+      <aside class='notes'>
+      </aside>
+    </section>
+
+    <section>
+
+      <aside class='notes'>
+      </aside>
+    </section>
+
+    <section>
+
+      <aside class='notes'>
+      </aside>
+    </section>
+
+    <section>
+
+      <aside class='notes'>
+      </aside>
+    </section>
+
+    <section>
+
+      <aside class='notes'>
+      </aside>
+    </section>
+
     <aside class='notes'>
     </aside>
     </section>
@@ -1183,15 +1217,51 @@ as.integer( names( cats_dry_mode ) )
         RQ: What are the descriptives for the tidy_cats dataset?
       </p>
       <pre><code class='r'>summary(tidy_cats)
+
 #          Name      Month                dry            wet
 #Millie      :3   Length:12          Min.   :1000   Min.   :   0
 #Prof. Jiggly:3   Class :character   1st Qu.:2500   1st Qu.:1875
 #Pumpkin     :3   Mode  :character   Median :3250   Median :2250
 #Pusheen     :3                      Mean   :3333   Mean   :2250
-#                                   3rd Qu.:4000   3rd Qu.:3000
-#                                   Max.   :5500   Max.   :4000  </code></pre>
+#                                    3rd Qu.:4000   3rd Qu.:3000
+#                                    Max.   :5500   Max.   :4000
+
+library(psych)
+describe(tidy_cats)
+
+#       vars  n    mean      sd median trimmed     mad  min  max range  skew
+#Name*     1 12    2.50    1.17    2.5     2.5    1.48    1    4     3  0.00
+#Month*    2 12     NaN      NA     NA     NaN      NA  Inf -Inf  -Inf    NA
+#dry       3 12 3333.33 1267.30 3250.0  3350.0 1111.95 1000 5500  4500 -0.03
+#wet       4 12 2250.00 1076.61 2250.0  2300.0 1111.95    0 4000  4000 -0.45
+#       kurtosis     se
+#Name*     -1.62   0.34
+#Month*       NA     NA
+#dry       -0.93 365.84
+#wet       -0.58 310.79
+#Warning messages:
+#1: NAs introduced by coercion
+#2: In FUN(newX[, i], ...) : no non-missing arguments to min; returning Inf
+#3: In FUN(newX[, i], ...) :
+#  no non-missing arguments to max; returning -Inf
+</code></pre>
       <aside class='notes'>
       </aside>
+    </section>
+
+    <section>
+      <h3>
+        Descriptives: but I want a graph!
+      </h3>
+      <p>
+        By this point I would be crying out for a visual representation of the data.
+      </p>
+      <p class='fragment' data-fragment-index='1'>
+        I apologise but that is the topic of next week's session.
+      </p>
+      <p class='fragment' data-fragment-index='1'>
+        However, I feel your pain!
+      </p>
     </section>
 
     </section>

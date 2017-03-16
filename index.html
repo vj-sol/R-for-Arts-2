@@ -851,6 +851,9 @@ However, vectors only have 1 dimension and the data the we have imported has 2 d
       <h3>
         Tidy Data
       </h3>
+      <p>
+        There exists such a thing as tidy data and it takes the following form:
+      </p>
       <div align='center'>
         <img style='border:0;box-shadow:none;width:120%' src='resources/tidy-data.png' alt='R for Data Science tidy data diagram'/>
       </div>
@@ -858,14 +861,21 @@ However, vectors only have 1 dimension and the data the we have imported has 2 d
       <p align='right'>
         <small>Image drawn from: <a href='http://r4ds.had.co.nz/tidy-data.html'>http://r4ds.had.co.nz/tidy-data.html</a></small>
       </p>
+      <p>
+        This will not be the optimal structure for all data sets but it is certainly a good place to start.
+      </p>
       <aside class='notes'>
 
       </aside>
     </section>
+
     <section>
       <h3>
-        Variables, Observations and Values
+        Tidy Data
       </h3>
+      <p>
+        Datasets come in a dizzying array of different formats and not all of them will be tidy.
+      </p>
       <table>
         <tr>
           <td>Variables</td>
@@ -887,6 +897,20 @@ However, vectors only have 1 dimension and the data the we have imported has 2 d
 
     </aside>
   </section>
+
+
+
+
+    <!--    NEW TOP LEVEL SLIDE      -->
+  <section align='left'>
+    <section>
+      <h2 align='center'>
+        Checking Data
+      </h2>
+    </section>
+    <aside class='notes'>
+    </aside>
+    </section>
 
 
 
@@ -948,6 +972,8 @@ However, vectors only have 1 dimension and the data the we have imported has 2 d
       <h3>
         Tidying data
       </h3>
+      <pre><code class='r'>guns <- read.csv('https://raw.githubusercontent.com/BuzzFeedNews/nics-firearm-background-checks/master/data/nics-firearm-background-checks.csv',header=T)
+</code></pre>
       <aside class='notes'>
 
       </aside>
@@ -1002,6 +1028,18 @@ eu_unit <- spread(eu_country, key = unit, value = value)
         </code></pre>
 
       </aside>
+
+      <section>
+        <h3>
+          Project 2: Leeds Car accidents 2015
+        </h3>
+        <p>
+          The data for this project were published by Leeds City Council and can be found <a href='https://aql.datapress.com/leeds/dataset/road-traffic-accidents/2016-05-19T15:30:50/2015.csv'>here</a>
+        </p>
+      </section>
+
+      <section>
+        </section
       </section>
 
 

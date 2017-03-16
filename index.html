@@ -1196,6 +1196,7 @@ Note how the output is not an integer, R is conservative and let's you know that
         <p>
           So, let's go ahead and subset our data into only those observations for March.
         </p>
+        <div class='fragment'>
         <pre><code class='r'>tidy_cats[ tidy_cats$Month == 'Mar', ]
 #           Name Month  dry  wet
 #3        Millie   Mar 2000 3000
@@ -1203,6 +1204,8 @@ Note how the output is not an integer, R is conservative and let's you know that
 #9       Pumpkin   Mar 3500 3000
 #12      Pusheen   Mar 2500 2000
 </code></pre>
+        </div>
+
         <aside class='notes'>
         </aside>
       </section>
@@ -1212,8 +1215,9 @@ Note how the output is not an integer, R is conservative and let's you know that
           Selecting Data
         </h3>
         <p>
-          What if we wanted the data for all months except March?.
+          What if we wanted the data for all months except March?
         </p>
+           <div class='fragment'>
         <pre><code class='r'>tidy_cats[ tidy_cats$Month != 'Mar' , ]
 #           Name Month  dry  wet
 #1        Millie   Feb 3000 2000
@@ -1225,6 +1229,7 @@ Note how the output is not an integer, R is conservative and let's you know that
 #10      Pusheen   Feb 3000 3000
 #11      Pusheen   Jan 2500 3000
 </code></pre>
+           </div>
         <aside class='notes'>
         </aside>
       </section>
@@ -1236,6 +1241,7 @@ Note how the output is not an integer, R is conservative and let's you know that
         <p>
           Now let's get the data for those cats that eat more than 2000 grams of wet food a month.
         </p>
+        <div class='fragment'>
         <pre><code class='r'>tidy_cats[ tidy_cats$wet > 2000 , ]
 #      Name Month  dry  wet
 #2   Millie   Jan 1000 4000
@@ -1245,6 +1251,7 @@ Note how the output is not an integer, R is conservative and let's you know that
 #10 Pusheen   Feb 3000 3000
 #11 Pusheen   Jan 2500 3000
 </code></pre>
+        </div>
         <aside class='notes'>
         </aside>
       </section>
@@ -1254,12 +1261,14 @@ Note how the output is not an integer, R is conservative and let's you know that
           Selecting Data
         </h3>
         <p>
-          What about the data for those cats that eat at least 1000 grams of dry food a month.
+          What about the data for those cats that eat at no more than 1000 grams of dry food a month.
         </p>
+  <div class='fragment'>
         <pre><code class='r'>tidy_cats[ tidy_cats$dry &lt;= 1000 , ]
 #      Name Month  dry  wet
 #2   Millie   Jan 1000 4000
 </code></pre>
+  </div>
         <aside class='notes'>
         </aside>
       </section>

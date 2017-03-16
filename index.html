@@ -1106,12 +1106,15 @@ a + b
       This will return a logical vector where a TRUE statement indicates an NA.
       </p>
     <p>
-      To find the position of the NA value(s), combine this with the <pre style='display:inline'><code></code></pre>
+      To find the position of the NA value(s), combine this with the <pre style='display:inline'><code style='display:inline' class='r'>which()</code></pre> function.
     </p>
-      <pre><code class='r'>a <- 2
-b <- NA
-a + b
-#[1] NA</code></pre>
+      <pre><code class='r'>test <- 1:1000
+test[56] <- NA
+test
+#[1] NA
+which(is.na(test))
+#[1] 56
+      </code></pre>
       <p>
         Note how the output is not an integer, R is conservative and let's you know that you have missing data.
       </p>

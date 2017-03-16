@@ -1102,9 +1102,12 @@ a + b
         Checking Data: Missing Values
       </h3>
       <p>
-        You can find which data is missing by using the <pre style='display:inline'><code style='display:inline'>is.na()</code></pre> function.
-      Which
+        You can find which data is missing by using the <pre style='display:inline'><code style='display:inline' class='r'>is.na()</code></pre> function.
+      This will return a logical vector where a TRUE statement indicates an NA.
       </p>
+    <p>
+      To find the position of the NA value(s), combine this with the <pre style='display:inline'><code></code></pre>
+    </p>
       <pre><code class='r'>a <- 2
 b <- NA
 a + b
@@ -1220,7 +1223,7 @@ as.integer( names( cats_dry_mode ) )
         Descriptives: Range
       </h3>
       <p>
-        RQ: What is the range in the ampunt dry cat food eaten across all cats and all months?
+        RQ: What is the range in the amount dry cat food eaten across all cats and all months?
       </p>
       <pre><code class='r'>max(tidy_cats$dry) - min(tidy_cats$dry)
 #[1] 4500</code></pre>
@@ -1233,7 +1236,7 @@ as.integer( names( cats_dry_mode ) )
         Descriptives: Interquartile Range
       </h3>
       <p>
-        RQ: What is the interquartilerange for the amount dry cat food eaten across all cats and all months?
+        RQ: What is the interquartile range for the amount dry cat food eaten across all cats and all months?
       </p>
       <pre><code class='r'>IQR(tidy_cats$dry)
 #[1] 1500</code></pre>

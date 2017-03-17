@@ -1354,16 +1354,19 @@ which(is.na(test))
             <p>
               Here we will be dealing with a toy example using the names in out cat data but all examples can be extrapolated to larger datasets.
             </p>
-            <!--         <p> -->
+            <div class='fragment'>
             The most simple task to ask of a character vector is how many characters there are.
             This can be accomplished by using the <pre style='display:inline'><code style='display:inline' class='r'>nchar()</code></pre> function.
             <!--         </p> -->
             <pre><code class='r'>nchar(as.character(tidy_cats$Name[4]))
 [1] 12</code></pre>
+            </div>
+            <div class='fragment'>
             But the <pre style='display:inline'><code style='display:inline' class='r'>str_length()</code></pre> function from the stringr package makes this easier:
             <pre><code class='r'>library(stringr)
 str_length(tidy_cats$Name[4])
 [1] 12</code></pre>
+          </div>
           </div>
           <aside class='notes'>
           </aside>
@@ -1386,6 +1389,7 @@ str_sub(tidy_cats$Name[4],1,5)
 str_sub(tidy_cats$Name[4],1,-3)
 #[1] "Prof. Jigg"
 </code></pre>
+            <div class='fragment'>
             <p>
               stringr also allows us to handle whitespace:
             </p>
@@ -1397,6 +1401,7 @@ str_trim("   Professor Jiggly is loose in the cat room!  ", side = 'both')
             <p>
               This  function can come in very handy when standardising a data set.
             </p>
+            </div>
           </div>
         </section>
 

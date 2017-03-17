@@ -1685,10 +1685,37 @@ describe(tidy_cats)
         <h3>
           Tidying data
         </h3>
-        <pre><code class='r'>guns <- read.csv('https://raw.githubusercontent.com/BuzzFeedNews/nics-firearm-background-checks/master/data/nics-firearm-background-checks.csv',header=T)
-</code></pre>
+        <ol>
+          <li>Summarise what the structure of tidy data looks like</li>
+          <li>Should all data be stored in the tidy format?</li>
+          <li>Find the two functions from the tidyr package that were used in this session and use the help function to find out more about them.
+          What inputs do they take and do they have additional functionality?</li>
+        </ol>
       <aside class='notes'>
 
+      </aside>
+    </section>
+
+        <section>
+        <h3>
+          Tidying data
+        </h3>
+        <ol start='4'>
+          <li>Given the following dataset, perform the following actions:
+<pre><code class='r'>#   whiskers   tail.length   cat1   cat2   cat3
+#   5          12            Toby   NA     NA
+#   9          15            NA     Cleo   NA
+#   7          10            NA     NA     Sir Snuffles</code></pre>
+
+          <ol>
+          <li type='a'>Collect the cat names into one column</li>
+          <li type='a'>Move the newly created name column to the left most data column (do not overwrite any data!)</li>
+            <li type='a'> Make sure that the column names match up correctly (you may need to investigate the <pre style='display:inline'><code style='display:inline' class='r'>colnames()</code></pre> function).</li>
+          </ol>
+            </li>
+        </ol>
+      <aside class='notes'>
+# Hint: What does the help say about NAs?
       </aside>
     </section>
 
@@ -1701,6 +1728,14 @@ describe(tidy_cats)
         <section>
           <h3>
             Checking and selecting data
+          </h3>
+          <pre><code class='r'>guns <- read.csv('https://raw.githubusercontent.com/BuzzFeedNews/nics-firearm-background-checks/master/data/nics-firearm-background-checks.csv',header=T)
+</code></pre>
+        </section>
+
+        <section>
+          <h3>
+            Descriptives
           </h3>
         </section>
 

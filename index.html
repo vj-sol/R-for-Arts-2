@@ -36,6 +36,7 @@
 
         <!--    NEW TOP LEVEL SLIDE      -->
         <section>
+          <section>
           <h1>
             <img src='resources/R-logo.png' alt='R logo' style='background:none; border:none; box-shadow:none;'> for Arts
           </h1>
@@ -48,6 +49,13 @@
           <aside class='notes'>
 
           </aside>
+            </section>
+          <section>
+          <h3>
+            Feedback
+            </h3>
+          </section>
+
         </section>
 
 
@@ -256,13 +264,25 @@ Providing your R <span style='display:inline;color:blue;margin-top:0'>objects</s
         </aside>
       </section>
 
-      <!--       <section>
-<h2 align='center'>
-Session 2
-</h2>
-<aside class='notes'>
-</aside>
-</section> -->
+<section align='left'>
+  <h3>
+    Cats, skins and fixing things
+  </h3>
+  <p>
+    R is crazy versatile, this means:
+    <ol>
+      <li class='fragment'>You can perform almost any analysis.</li>
+      <li class='fragment'>'There's  more than one way to skin a cat' - There are many ways to do the same thing.</li>
+  </ol>
+      </p>
+      <p class='fragment'>
+  Everything that I present is just one way to approach the problem.
+  There may very well be a more efficient way to do it.
+  </p>
+      <p class='fragment'>
+        For the time being - 'If it ain't broke, don't fix it'.
+      </p>
+      </section>
 
     </section>
 
@@ -1814,10 +1834,13 @@ describe(tidy_cats)
             </h3>
             <p>
               This project is designed to mimic the process of wrangling with your own data.
-              It uses actual data from the European Union Open Data Portal and concerns the numbers of accidents at work across the EU.
+              It uses actual data from the European Union Open Data Portal and concerns the numbers of accidents at work across the EU from 2008 to 2014 by days lost, sex and age.
             </p>
             <p>
               Naturally, the first step is to acquire the data, it can be found <a href='http://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing?file=data/hsw_ph3_07.tsv.gz&unzip=true'>here</a>, save it as a .csv file in a sensible directory.
+            </p>
+            <p>
+              Reference information for this data can be found <a href='http://ec.europa.eu/eurostat/cache/metadata/en/hsw_acc_work_esms.htm'>here</a>
             </p>
             <p>
               See the next slide for further details...
@@ -1834,8 +1857,11 @@ describe(tidy_cats)
             </h3>
             <ol>
               <li>Import the data into R</li>
-              <li>Reshape the data into a wide data format</li>
-              <li>What was the number of accidents in the UK?</li>
+              <li>Remove the EU27 and EU28 columns</li>
+              <li>Reshape the data so that each country can be considered as an observation</li>
+              <li>Now reshape the data so that the units are variables</li>
+              <li>Now separate out the total of ages for NR, PC and RT_INC into variables</li>
+              <li>What was the total number of accidents in the UK?</li>
             </ol>
 
             <aside class='notes'>
@@ -1844,11 +1870,22 @@ describe(tidy_cats)
           </section>
 
           <aside class='notes'>
-            <pre><code class='r'>library(reshape2,tidyr)
+            <pre><code class='r'>library(tidyr)
 eu_data_comma <- read.table('http://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing?file=data/hsw_ph3_07.tsv.gz&unzip=true',sep=',',T)
 eu_data_tab <- read.table('http://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing?file=data/hsw_ph3_07.tsv.gz&unzip=true',sep='\t',T)
 eu_data <- cbind(eu_data_comma[1:6],eu_data_tab[2:length(eu_data_tab)])
 rm('eu_data_comma','eu_data_tab')
+eu_data <- subset(eu_data, select = -c( EU27 , EU28 ) )
+eu_country <- gather(eu_data, BE , BG , CZ , DK , DE , EE , IE , EL , ES , FR , HR , IT , CY , LV , LT , LU ,  HU , MT , NL , AT , PL , PT , RO , SI , SK , SE , UK , NO , CH , key = country , value = value)
+eu_spread <- spread(eu_country, key = unit, value = value)
+eu_nr <- spread(eu_spread, key = age, value = NR, sep = '_')
+eu_nr <- subset(eu_nr, select = -c( PC , RT_INC ))
+eu_pc <- spread(eu_spread, key = age, value = PC, sep = '_')
+eu_pc <- subset(eu_pc, select = -c( NR , RT_INC ))
+eu_rt <-
+uk_acc <-
+
+
 eu_country <- melt(eu_data,id=c('matagent','severity','nace_r2','sex','age','unit','EU28','EU27'))
 colnames(eu_country)[9] <- 'country'
 #eu_age <- spread(eu_country, key = age, value = value)
@@ -1864,6 +1901,12 @@ eu_unit <- spread(eu_country, key = unit, value = value)
               </h3>
               <p>
                 The data for this project were published by Leeds City Council and can be found <a href='https://aql.datapress.com/leeds/dataset/road-traffic-accidents/2016-05-19T15:30:50/2015.csv'>here</a>
+              </p>
+              <p>
+                Have a look at the data and form your own hypotheses.
+              </p>
+              <p>
+                Before analysing the data, design an anlysis pipeline that will provide you with answers to your hypotheses.
               </p>
             </section>
 

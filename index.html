@@ -1447,7 +1447,7 @@ str_trim("   Professor Jiggly is loose in the cat room!  ", side = 'both')
           </aside>
         </section>
 
-        <section>
+        <section id='mode'>
           <h3>
             Descriptives: Mode
           </h3>
@@ -1777,6 +1777,35 @@ describe(tidy_cats)
             <h3>
               Descriptives
             </h3>
+            <p>
+              Here we will continue using the FBI data regarding firearm background checks.
+            </p>
+            Using that data, find out the following information:
+            <ol>
+              <li>The mean number of <pre style='display:inline'><code style='display:inline' class='r'>private_sale_long_gun</code></pre>s</li>
+              <li>The median number of <pre style='display:inline'><code style='display:inline' class='r'>private_sale_long_gun</code></pre>s in the state of Wyoming</li>
+              <li>The number of <pre style='display:inline'><code style='display:inline' class='r'>private_sale_long_gun</code></pre>s in the state of Wyoming in March 2016</li>
+            </ol>
+        </section>
+
+        <section>
+          <h3>
+              Descriptives
+            </h3>
+          <div style='font-size:90%'>
+          <ol start='4'>
+              <li>Use a single function to produce descriptives for <pre style='display:inline'><code style='display:inline' class='r'>private_sale_handgun</code></pre>s in the state of Alabama
+              <ol>
+                <li type='a'>What is the max value?</li>
+                <li type='a'>What is the min value?</li>
+                <li type='a'>What is the mean value?</li>
+                <li type='a'>What is the median value?</li>
+                <li type='a'>Work out the interquartile range without calling the <pre style='display:inline'><code class='r' style='display:inline'>IQR()</code></pre> function.</li>
+                <li type='a'>What is the standard deviation of the data? If you can't tell from your descriptives, might there be another function that could help?</li>
+                <li type='a'>On <a href='#/mode'>this</a> slide, I offered a way to calculate the mode. Can you think of another way to do this? Apply your method to your current dataset to find the mode.</li>
+                </ol></li>
+            </ol>
+          </div>
           </section>
 
           <section>

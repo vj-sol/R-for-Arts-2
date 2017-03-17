@@ -1118,36 +1118,36 @@ complete.cases(tidy_cats)
           R will default to telling you that something is unknown rather than assuming anything.
           </p>
           <pre><code class='r'>a <- 2
-b <- NA
-a + b
-#[1] NA</code></pre>
+          b <- NA
+          a + b
+          #[1] NA</code></pre>
           <p>
           Note how the output is not an integer, R is conservative and lets you know that you have missing data.
           </p>
           <aside class='notes'>
           </aside>
-        </section>
+          </section>
 
-        <section>
+          <section>
           <h3>
-            Checking Data: Missing Values
+          Checking Data: Missing Values
           </h3>
           <p>
-            You can find which data is missing by using the <pre style='display:inline'><code style='display:inline' class='r'>is.na()</code></pre> function.
+          You can find which data is missing by using the <pre style='display:inline'><code style='display:inline' class='r'>is.na()</code></pre> function.
           This will return a logical vector where a TRUE statement indicates an NA.
           </p>
-        <!--     <p> -->
-        To find the position of the NA value(s), combine this with the <pre style='display:inline'><code style='display:inline' class='r'>which()</code></pre> function.
-        <!--     </p> -->
-        <pre><code class='r'>test <- 1:1000
-test[56] <- NA
-test
-#[1] NA
-which(is.na(test))
-#[1] 56
-      </code></pre>
-        <!--       <p>
-Note how the output is not an integer, R is conservative and let's you know that you have missing data.
+          <!--     <p> -->
+          To find the position of the NA value(s), combine this with the <pre style='display:inline'><code style='display:inline' class='r'>which()</code></pre> function.
+          <!--     </p> -->
+          <pre><code class='r'>test <- 1:1000
+          test[56] <- NA
+          test
+          #[1] NA
+          which(is.na(test))
+          #[1] 56
+          </code></pre>
+          <!--       <p>
+          Note how the output is not an integer, R is conservative and let's you know that you have missing data.
 </p> -->
         <aside class='notes'>
         </aside>
@@ -1290,49 +1290,49 @@ Note how the output is not an integer, R is conservative and let's you know that
         </aside>
       </section>
 
-      <section>
-        <h3>
-          Selecting data: dealing with text
-        </h3>
-        R handles character (or 'string') data in a similar way to vectors.
-        However, there are some quirks and the <a href='https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html'>stringr</a> package helps us to dealwith these quirks.
+        <section>
+          <h3>
+            Selecting data: dealing with text
+          </h3>
+          R handles character (or 'string') data in a similar way to vectors.
+          However, there are some quirks and the <a href='https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html'>stringr</a> package helps us to dealwith these quirks.
 
-        <aside class='notes'>
-        </aside>
-      </section>
+          <aside class='notes'>
+          </aside>
+        </section>
 
-      <section>
-        <h3>
-          Selecting data: dealing with text
-        </h3>
-        <div style='font-size:90%'>
-          <p>
-            Here we will be dealing with a toy example using the names in out cat data but all examples can be extrapolatedto larger datasets.
-          </p>
-          <!--         <p> -->
-          The most simple task to ask of a character vector is how many characters there are.
-          This can be accomplished by using the <pre style='display:inline'><code style='display:inline' class='r'>nchar()</code></pre> function.
-          <!--         </p> -->
-          <pre><code class='r'>nchar(as.character(tidy_cats$Name[4]))
+        <section>
+          <h3>
+            Selecting data: dealing with text
+          </h3>
+          <div style='font-size:90%'>
+            <p>
+              Here we will be dealing with a toy example using the names in out cat data but all examples can be extrapolatedto larger datasets.
+            </p>
+            <!--         <p> -->
+            The most simple task to ask of a character vector is how many characters there are.
+            This can be accomplished by using the <pre style='display:inline'><code style='display:inline' class='r'>nchar()</code></pre> function.
+            <!--         </p> -->
+            <pre><code class='r'>nchar(as.character(tidy_cats$Name[4]))
 [1] 12</code></pre>
-          But the <pre style='display:inline'><code style='display:inline' class='r'>str_length()</code></pre> function from the stringr package makes this easier:
-          <pre><code class='r'>library(stringr)
+            But the <pre style='display:inline'><code style='display:inline' class='r'>str_length()</code></pre> function from the stringr package makes this easier:
+            <pre><code class='r'>library(stringr)
 str_length(tidy_cats$Name[4])
 [1] 12</code></pre>
-        </div>
-        <aside class='notes'>
-        </aside>
-      </section>
+          </div>
+          <aside class='notes'>
+          </aside>
+        </section>
 
-      <section>
-        <h3>
-          Selecting Data: dealing with text
-        </h3>
-        <div style='font-size:90%'>
-          <p>
-            The stringr package also allows us to access the individual characters in a character vector.
-          </p>
-          <pre><code class='r'>str_sub(tidy_cats$Name[4])
+        <section>
+          <h3>
+            Selecting Data: dealing with text
+          </h3>
+          <div style='font-size:90%'>
+            <p>
+              The stringr package also allows us to access the individual characters in a character vector.
+            </p>
+            <pre><code class='r'>str_sub(tidy_cats$Name[4])
 #[1] "Prof. Jiggly"
 
 str_sub(tidy_cats$Name[4],1,5)
@@ -1341,120 +1341,120 @@ str_sub(tidy_cats$Name[4],1,5)
 str_sub(tidy_cats$Name[4],1,-3)
 #[1] "Prof. Jigg"
 </code></pre>
-          <p>
-            stringr also allows us to handle whitespace:
-          </p>
-          <pre><code class='r'>"   Professor Jiggly is loose in the cat room!  "
+            <p>
+              stringr also allows us to handle whitespace:
+            </p>
+            <pre><code class='r'>"   Professor Jiggly is loose in the cat room!  "
 #[1] "   Professor Jiggly is loose in the cat room!  "
 
 str_trim("   Professor Jiggly is loose in the cat room!  ", side = 'both')
 #[1] "Professor Jiggly is loose in the cat room!"</code></pre>
+            <p>
+              This  function can come in very handy when standardising a data set.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h3>
+            Selecting data: dealing with text
+          </h3>
+          Some stringr functions:
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  Function
+                </th>
+                <th>
+                  Description
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><pre><code class='r'>str_length()</code></pre></td><td>Gets number of characters in a string</td></tr>
+              <tr><td><pre><code class='r'>str_sub()</code></pre></td><td>Allows access to individual characters</td></tr>
+              <tr><td><pre><code class='r'>str_trim()</code></pre></td><td>Removes leading and trailing whitespace</td></tr>
+              <tr><td><pre><code class='r'>str_subset()</code></pre></td><td>returns the elements of a character vector that match a regular expression</td></tr>
+            </tbody>
+          </table>
+
+          <aside class='notes'>
+          </aside>
+        </section>
+
+        <aside class='notes'>
+        </aside>
+      </section>
+
+
+
+
+
+      <!--    NEW TOP LEVEL SLIDE      -->
+      <section align='left'>
+        <section>
+          <h2 align='center'>
+            Descriptives
+          </h2>
+        </section>
+
+        <section>
+          <h3>
+            Descriptives
+          </h3>
           <p>
-            This  function can come in very handy when standardising a data set.
+            Descriptive statistics do what they say on the tin.
+            They <span style='color:red'>describe</span> your data.
           </p>
-        </div>
-      </section>
-
-      <section>
-        <h3>
-          Selecting data: dealing with text
-        </h3>
-        Some stringr functions:
-        <table>
-          <thead>
-            <tr>
-              <th>
-                Function
-              </th>
-              <th>
-                Description
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td><pre><code class='r'>str_length()</code></pre></td><td>Gets number of characters in a string</td></tr>
-            <tr><td><pre><code class='r'>str_sub()</code></pre></td><td>Allows access to individual characters</td></tr>
-            <tr><td><pre><code class='r'>str_trim()</code></pre></td><td>Removes leading and trailing whitespace</td></tr>
-            <tr><td><pre><code class='r'>str_subset()</code></pre></td><td>returns the elements of a character vector that match a regular expression</td></tr>
-          </tbody>
-        </table>
+          <p>
+            These statistics include things such as the mean, median, mode, range, interquartile range, standard deviation and standard error.
+          </p>
+          <p>
+            All of which are detailed in the <a href='https://github.com/vj-sol/R-for-Arts/raw/master/resources/Basic_stats.pdf'>Basic Statstics document</a> for this course
+          </p>
+        </section>
 
         <aside class='notes'>
         </aside>
-      </section>
 
-      <aside class='notes'>
-      </aside>
-    </section>
-
-
-
-
-
-    <!--    NEW TOP LEVEL SLIDE      -->
-    <section align='left'>
-      <section>
-        <h2 align='center'>
-          Descriptives
-        </h2>
-      </section>
-
-      <section>
-        <h3>
-          Descriptives
-        </h3>
-        <p>
-          Descriptive statistics do what they say on the tin.
-          They <span style='color:red'>describe</span> your data.
-        </p>
-        <p>
-          These statistics include things such as the mean, median, mode, range, interquartile range, standard deviation and standard error.
-        </p>
-        <p>
-          All of which are detailed in the <a href='https://github.com/vj-sol/R-for-Arts/raw/master/resources/Basic_stats.pdf'>Basic Statstics document</a> for this course
-        </p>
-      </section>
-
-      <aside class='notes'>
-      </aside>
-
-      <section>
-        <h3>
-          Descriptives: Mean
-        </h3>
-        <p>
-          Let's return to our cat data to calculate a mean.
-        </p>
-        <p>
-          RQ: What is the mean amount of dry cat food eaten across all cats and all months?
-        </p>
-        <pre><code class='r'>mean(tidy_cats$dry)
+        <section>
+          <h3>
+            Descriptives: Mean
+          </h3>
+          <p>
+            Let's return to our cat data to calculate a mean.
+          </p>
+          <p>
+            RQ: What is the mean amount of dry cat food eaten across all cats and all months?
+          </p>
+          <pre><code class='r'>mean(tidy_cats$dry)
 #[1] 3333.333</code></pre>
-        <aside class='notes'>
-        </aside>
-      </section>
+          <aside class='notes'>
+          </aside>
+        </section>
 
-      <section>
-        <h3>
-          Descriptives: Median
-        </h3>
-        <p>
-          RQ: What is the median amount of dry cat food eaten across all cats and all months?
-        </p>
-        <pre><code class='r'>median(tidy_cats$dry)
+        <section>
+          <h3>
+            Descriptives: Median
+          </h3>
+          <p>
+            RQ: What is the median amount of dry cat food eaten across all cats and all months?
+          </p>
+          <pre><code class='r'>median(tidy_cats$dry)
 #[1] 3250</code></pre>
-        <aside class='notes'>
-        </aside>
-      </section>
+          <aside class='notes'>
+          </aside>
+        </section>
 
-      <section>
-        <h3>
-          Descriptives: Mode
-        </h3>
-        <p>
-          RQ: What is the mode amount of dry cat food eaten across all cats and all months?
-        </p>
-        <pre><code class='r'>cats_dry_table <- table(tidy_cats$dry)
+        <section>
+          <h3>
+            Descriptives: Mode
+          </h3>
+          <p>
+            RQ: What is the mode amount of dry cat food eaten across all cats and all months?
+          </p>
+          <pre><code class='r'>cats_dry_table <- table(tidy_cats$dry)
 cats_dry_table
 #1000 2000 2500 3000 3500 4000 5000 5500
 #   1    1    2    2    1    3    1    1
@@ -1462,57 +1462,57 @@ cats_dry_mode <- cats_dry_table[ cats_dry_table == max( cats_dry_table ) ]
 as.integer( names( cats_dry_mode ) )
 #4000
 </code></pre>
-        <aside class='notes'>
-        </aside>
-      </section>
+          <aside class='notes'>
+          </aside>
+        </section>
 
-      <section>
-        <h3>
-          Descriptives: Range
-        </h3>
-        <p>
-          RQ: What is the range in the amount of dry cat food eaten across all cats and all months?
-        </p>
-        <pre><code class='r'>max(tidy_cats$dry) - min(tidy_cats$dry)
+        <section>
+          <h3>
+            Descriptives: Range
+          </h3>
+          <p>
+            RQ: What is the range in the amount of dry cat food eaten across all cats and all months?
+          </p>
+          <pre><code class='r'>max(tidy_cats$dry) - min(tidy_cats$dry)
 #[1] 4500</code></pre>
-        <aside class='notes'>
-        </aside>
-      </section>
+          <aside class='notes'>
+          </aside>
+        </section>
 
-      <section>
-        <h3>
-          Descriptives: Interquartile Range
-        </h3>
-        <p>
-          RQ: What is the interquartile range for the amount of dry cat food eaten across all cats and all months?
-        </p>
-        <pre><code class='r'>IQR(tidy_cats$dry)
+        <section>
+          <h3>
+            Descriptives: Interquartile Range
+          </h3>
+          <p>
+            RQ: What is the interquartile range for the amount of dry cat food eaten across all cats and all months?
+          </p>
+          <pre><code class='r'>IQR(tidy_cats$dry)
 #[1] 1500</code></pre>
-        <aside class='notes'>
-        </aside>
-      </section>
+          <aside class='notes'>
+          </aside>
+        </section>
 
-      <section>
-        <h3>
-          Descriptives: Standard Deviation
-        </h3>
-        <p>
-          RQ: What is the standard deviation for the amount of dry cat food eaten across all cats and all months?
-        </p>
-        <pre><code class='r'>sd( tidy_cats$dry )
+        <section>
+          <h3>
+            Descriptives: Standard Deviation
+          </h3>
+          <p>
+            RQ: What is the standard deviation for the amount of dry cat food eaten across all cats and all months?
+          </p>
+          <pre><code class='r'>sd( tidy_cats$dry )
 #[1] 1267.304</code></pre>
-        <aside class='notes'>
-        </aside>
-      </section>
+          <aside class='notes'>
+          </aside>
+        </section>
 
-      <section>
-        <h3>
-          Descriptives: Do it in a oner
-        </h3>
-        <p>
-          RQ: What are the descriptives for the tidy_cats dataset?
-        </p>
-        <pre><code class='r'>summary(tidy_cats)
+        <section>
+          <h3>
+            Descriptives: Do it in a oner
+          </h3>
+          <p>
+            RQ: What are the descriptives for the tidy_cats dataset?
+          </p>
+          <pre><code class='r'>summary(tidy_cats)
 
 #          Name      Month                dry            wet
 #Millie      :3   Length:12          Min.   :1000   Min.   :   0
@@ -1541,113 +1541,113 @@ describe(tidy_cats)
 #3: In FUN(newX[, i], ...) :
 #  no non-missing arguments to max; returning -Inf
 </code></pre>
-        <aside class='notes'>
-        </aside>
+          <aside class='notes'>
+          </aside>
+        </section>
+
+        <section>
+          <h3>
+            Descriptives: but I want a graph!
+          </h3>
+          <p>
+            By this point I would be crying out for a visual representation of the data.
+          </p>
+          <p class='fragment' data-fragment-index='1'>
+            I apologise but that is the topic of next week's session.
+          </p>
+          <p class='fragment' data-fragment-index='1'>
+            However, I feel your pain!
+          </p>
+        </section>
+
       </section>
 
-      <section>
-        <h3>
-          Descriptives: but I want a graph!
-        </h3>
-        <p>
-          By this point I would be crying out for a visual representation of the data.
-        </p>
-        <p class='fragment' data-fragment-index='1'>
-          I apologise but that is the topic of next week's session.
-        </p>
-        <p class='fragment' data-fragment-index='1'>
-          However, I feel your pain!
-        </p>
-      </section>
-
-    </section>
 
 
+      <!--    NEW TOP LEVEL SLIDE      -->
+      <section align='left'>
 
-    <!--    NEW TOP LEVEL SLIDE      -->
-    <section align='left'>
+        <section>
+          <h2 align='center'>
+            Exercises
+          </h2>
+          <aside class='notes'>
 
-      <section>
-        <h2 align='center'>
-          Exercises
-        </h2>
-        <aside class='notes'>
+          </aside>
+        </section>
 
-        </aside>
-      </section>
+        <section>
+          <h3>
+            Packages
+          </h3>
+          <p>
+            Vist <a href='https://cran.r-project.org/web/packages/available_packages_by_date.html'>https://cran.r-project.org/web/packages/available_packages_by_date.html</a> and search for a package that you might find useful.
+            Once you have found a package, do the following:
+          </p>
+          <ol>
+            <li>Install it</li>
+            <li>Load it into your R workspace</li>
+            <li>Use the help function to learn more about the package</li>
+            <li>Try using one of the package's functions (if you need a test dataset, R has some built in. Use <pre style='display:inline'><code style='display:inline' class='r'>data()</code></pre> to see what is available.)</li>
+          </ol>
+          <aside class='notes'>
 
-      <section>
-        <h3>
-          Packages
-        </h3>
-        <p>
-          Vist <a href='https://cran.r-project.org/web/packages/available_packages_by_date.html'>https://cran.r-project.org/web/packages/available_packages_by_date.html</a> and search for a package that you might find useful.
-          Once you have found a package, do the following:
-        </p>
-        <ol>
-          <li>Install it</li>
-          <li>Load it into your R workspace</li>
-          <li>Use the help function to learn more about the package</li>
-          <li>Try using one of the package's functions (if you need a test dataset, R has some built in. Use <pre style='display:inline'><code style='display:inline' class='r'>data()</code></pre> to see what is available.)</li>
-        </ol>
-        <aside class='notes'>
+          </aside>
+        </section>
 
-        </aside>
-      </section>
+        <section>
+          <h3>
+            Packages
+          </h3>
+          <ol start='5'>
+            <li>How would you specify that you wanted to specifically use the <pre style='display:inline'><code style='display:inline' class='r'>alpha()</code></pre> function from the psych package?</li>
+            <li>Do you need to install a package each time you want to use it?</li>
+            <li>Would it be important to include an <pre style='display:inline'><code style='display:inline' class='r'>install.packages()</code></pre> command in a script that you were sharing? Why?</li>
+          </ol>
+        </section>
 
-      <section>
-        <h3>
-          Packages
-        </h3>
-        <ol start='5'>
-          <li>How would you specify that you wanted to specifically use the <pre style='display:inline'><code style='display:inline' class='r'>alpha()</code></pre> function from the psych package?</li>
-          <li>Do you need to install a package each time you want to use it?</li>
-          <li>Would it be important to include an <pre style='display:inline'><code style='display:inline' class='r'>install.packages()</code></pre> command in a script that you were sharing? Why?</li>
-        </ol>
-      </section>
+        <section>
+          <h3>
+            Importing data
+          </h3>
+          <ol>
+            <li>What types of data can R handle?</li>
+            <li>What is the preferred data format and what is its structure?</li>
+            <li>When importing data, what is meant by the term 'separator'?</li>
+            <li>Investigate the <pre style='display:inline'><code style='display:inline' class='r'>read.table()</code></pre> command. What additional functionality does it have?</li>
+          </ol>
+        </section>
+        <section>
+          <h3>
+            Importing data
+          </h3>
+          <ol start='5'>
+            <li>Using the <pre style='display:inline'><code style='display:inline' class='r'>read.table()</code></pre></li> function, read in the dataset at the following location <a href='http://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/cats.csv'>http://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/cats.csv</a> and assign it to an object.
+            <li>Using the <pre style='display:inline'><code style='display:inline' class='r'>read.csv()</code></pre></li> function, read in the dataset at the following location <a href='http://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/cat-food.csv'>http://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/cat-food.csv</a> and assign it to another object.
+          </ol>
+          <aside class='notes'>
 
-      <section>
-        <h3>
-          Importing data
-        </h3>
-        <ol>
-          <li>What types of data can R handle?</li>
-          <li>What is the preferred data format and what is its structure?</li>
-          <li>When importing data, what is meant by the term 'separator'?</li>
-          <li>Investigate the <pre style='display:inline'><code style='display:inline' class='r'>read.table()</code></pre> command. What additional functionality does it have?</li>
-        </ol>
-      </section>
-      <section>
-        <h3>
-          Importing data
-        </h3>
-        <ol start='5'>
-          <li>Using the <pre style='display:inline'><code style='display:inline' class='r'>read.table()</code></pre></li> function, read in the dataset at the following location <a href='http://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/cats.csv'>http://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/cats.csv</a> and assign it to an object.
-          <li>Using the <pre style='display:inline'><code style='display:inline' class='r'>read.csv()</code></pre></li> function, read in the dataset at the following location <a href='http://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/cat-food.csv'>http://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/cat-food.csv</a> and assign it to another object.
-        </ol>
-        <aside class='notes'>
+          </aside>
+        </section>
 
-        </aside>
-      </section>
+        <section>
+          <h3>
+            Navigating data
+          </h3>
+          <ol>
+            <li>What type of brackets are used to extract data from a 1 dimensional object in R?</li>
+            <li>What type of brackets are used to extract data from a 2 dimensional object in R?</li>
+            <li>What is the difference between the code for extracting data from a 1 dimensional dataset and a 2 dimensional data set?</li>
+            <li>What type of operator can be used to extract columns from a <pre style='display:inline'><code style='display:inline' class='r'>data.frame</code></pre>?</li>
+          </ol>
+        </section>
 
-      <section>
-        <h3>
-          Navigating data
-        </h3>
-        <ol>
-          <li>What type of brackets are used to extract data from a 1 dimensional object in R?</li>
-          <li>What type of brackets are used to extract data from a 2 dimensional object in R?</li>
-          <li>What is the difference between the code for extracting data from a 1 dimensional dataset and a 2 dimensional data set?</li>
-          <li>What type of operator can be used to extract columns from a <pre style='display:inline'><code style='display:inline' class='r'>data.frame</code></pre>?</li>
-        </ol>
-      </section>
-
-      <section>
-        <h3>
-          Navigating data
-        </h3>
-        <ol start='5'>
-          <li>For the vector <pre style='display:inline'><code style='display:inline' class='r'>my_vect <- c(23 , 49 , 567 , 32 , 90)</code></pre> predict what the result of the following code will be without running it:
+        <section>
+          <h3>
+            Navigating data
+          </h3>
+          <ol start='5'>
+            <li>For the vector <pre style='display:inline'><code style='display:inline' class='r'>my_vect <- c(23 , 49 , 567 , 32 , 90)</code></pre> predict what the result of the following code will be without running it:
             <ol>
             <li type='a'><pre style='display:inline'><code style='display:inline' class='r'>my_vect[4]</code></pre></li>
             <li type='a'><pre style='display:inline'><code style='display:inline' class='r'>my_vect[-2]</code></pre></li>
@@ -1656,126 +1656,166 @@ describe(tidy_cats)
             <li type='a'><pre style='display:inline'><code style='display:inline' class='r'>my_vect[4,]</code></pre></li>
             </ol>
           </li>
-        </ol>
-        <aside class='notes'>
+          </ol>
+          <aside class='notes'>
 
-        </aside>
-      </section>
-
-      <section>
-        <h3>
-          Navigating data
-        </h3>
-        <ol start='6'>
-          <li>For the cats data that you imported using <pre style='display:inline'><code style='display:inline' class='r'>read.table()</code></pre>, do the following:
-            <ol>
-              <li type='a'>Extract the weight column and assign it to an object.</li>
-              <li type='a'>Extract the data value 'grey' and assign it to an object.</li>
-              <li type='a'>Extract all information about Millie the cat and assign it to an object.</li>
-              <li type='a'>Extract Millie's age from the newly created object.</li>
-            </ol>
-          </li>
-        </ol>
-        <aside class='notes'>
-
-        </aside>
-      </section>
-
-      <section>
-        <h3>
-          Tidying data
-        </h3>
-        <ol>
-          <li>Summarise what the structure of tidy data looks like</li>
-          <li>Should all data be stored in the tidy format?</li>
-          <li>Find the two functions from the tidyr package that were used in this session and use the help function to find out more about them.
-          What inputs do they take and do they have additional functionality?</li>
-        </ol>
-      <aside class='notes'>
-
-      </aside>
-    </section>
+          </aside>
+        </section>
 
         <section>
-        <h3>
-          Tidying data
-        </h3>
-        <ol start='4'>
-          <li>Given the following dataset (found <a href='https://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/td-cats.csv'>here</a>), perform the following actions:
-<pre><code class='r'>#   whiskers   tail.length   cat1   cat2   cat3
+          <h3>
+            Navigating data
+          </h3>
+          <ol start='6'>
+            <li>For the cats data that you imported using <pre style='display:inline'><code style='display:inline' class='r'>read.table()</code></pre>, do the following:
+              <ol>
+                <li type='a'>Extract the weight column and assign it to an object.</li>
+                <li type='a'>Extract the data value 'grey' and assign it to an object.</li>
+                <li type='a'>Extract all information about Millie the cat and assign it to an object.</li>
+                <li type='a'>Extract Millie's age from the newly created object.</li>
+              </ol>
+            </li>
+          </ol>
+          <aside class='notes'>
+
+          </aside>
+        </section>
+
+        <section>
+          <h3>
+            Tidying data
+          </h3>
+          <ol>
+            <li>Summarise what the structure of tidy data looks like</li>
+            <li>Should all data be stored in the tidy format?</li>
+            <li>Find the two functions from the tidyr package that were used in this session and use the help function to find out more about them.
+              What inputs do they take and do they have additional functionality?</li>
+          </ol>
+          <aside class='notes'>
+
+          </aside>
+        </section>
+
+        <section>
+          <h3>
+            Tidying data
+          </h3>
+          <ol start='4'>
+            <li>Given the following dataset (found <a href='https://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/td-cats.csv'>here</a>), perform the following actions:
+              <pre><code class='r'>#   whiskers   tail.length   cat1   cat2   cat3
 #   5          12            Toby   NA     NA
 #   9          15            NA     Cleo   NA
 #   7          10            NA     NA     Sir Snuffles</code></pre>
 
-          <ol>
-          <li type='a'>Collect the cat names into one column</li>
-          <li type='a'>Move the newly created name column to the left most data column (do not overwrite any data!)</li>
-            <li type='a'> Make sure that the column names match up correctly (you may need to investigate the <pre style='display:inline'><code style='display:inline' class='r'>colnames()</code></pre> function).</li>
-          </ol>
+              <ol>
+                <li type='a'>Collect the cat names into one column</li>
+                <li type='a'>Move the newly created name column to the left most data column (do not overwrite any data!)</li>
+                <li type='a'> Make sure that the column names match up correctly (you may need to investigate the <pre style='display:inline'><code style='display:inline' class='r'>colnames()</code></pre> function).</li>
+              </ol>
             </li>
-        </ol>
-      <aside class='notes'>
-# Hint: What does the help say about NAs?
-      </aside>
-    </section>
-
-        <section>
-          <h3>
-            Checking and selecting data
-          </h3>
-        </section>
-
-        <section>
-          <h3>
-            Checking and selecting data
-          </h3>
-          <pre><code class='r'>guns <- read.csv('https://raw.githubusercontent.com/BuzzFeedNews/nics-firearm-background-checks/master/data/nics-firearm-background-checks.csv',header=T)
-</code></pre>
-        </section>
-
-        <section>
-          <h3>
-            Descriptives
-          </h3>
-        </section>
-
-        <section>
-          <h3>
-            Project 1: Prep that data!
-          </h3>
-          <p>
-            This project is designed to mimic the process of wrangling with your own data.
-            It uses actual data from the European Union Open Data Portal and concerns the numbers of accidents at work across the EU.
-          </p>
-          <p>
-            Naturally, the first step is to acquire the data, it can be found <a href='http://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing?file=data/hsw_ph3_07.tsv.gz&unzip=true'>here</a>, save it as a .csv file in a sensible directory.
-          </p>
-          <p>
-            See the next slide for further details...
-          </p>
-
-          <aside class='notes'>
-
-          </aside>
-        </section>
-
-        <section>
-          <h3>
-            Project 1: Prep that data!
-          </h3>
-          <ol>
-            <li>Import the data into R</li>
-            <li>Reshape the data into a wide data format</li>
-            <li>What was the number of accidents in the UK?</li>
           </ol>
-
           <aside class='notes'>
-
+            # Hint: What does the help for the gather() function say about NAs?
           </aside>
         </section>
 
-        <aside class='notes'>
-          <pre><code class='r'>library(reshape2,tidyr)
+        <section>
+          <h3>
+            Tidying data
+          </h3>
+          <ol start='5'>
+            <li>Given the following dataset (found <a href='https://raw.githubusercontent.com/vj-sol/R-for-Arts-2/master/resources/td-cats-2.csv'>here</a>), perform the following actions:
+              <pre><code class='r'># name         feature         length
+#         Toby    whiskers      5
+#         Toby tail.length     12
+#         Cleo    whiskers      9
+#         Cleo tail.length     15
+# Sir Snuffles    whiskers      7
+# Sir Snuffles tail.length     10
+</code></pre>
+
+              <ol>
+                <li type='a'>Arrange the data such that whiskers and tail.length are variables with length as a value.</li>
+                <li type='a'>What class is the name column?</li>
+                <li type='a'>Find a function that shows you the structure of your new <pre style='display:inline'><code style='display:inline' class='r'>data.frame</code></pre></li>
+              </ol>
+            </li>
+          </ol>
+          <aside class='notes'>
+            # Hint: What does the help for the gather() function say about NAs?
+          </aside>
+        </section>
+
+        <section>
+          <h3>
+            Checking and selecting data
+          </h3>
+          For this series of exercises, we'll be using some real data.
+          <p>
+            This data (found <a href='https://raw.githubusercontent.com/BuzzFeedNews/nics-firearm-background-checks/master/data/nics-firearm-background-checks.csv'>here</a>) is taken from the  FBI's National Instant Criminal Background Check System and concerns firearm background check data from Nov. 1998 - Feb. 2017.
+          </p>
+          <p>
+            The data was collated and put into a database form by BuzzFeed News.
+          </p>
+        </section>
+
+        <section>
+          <h3>
+            Checking and selecting data
+          </h3>
+          For the data provided, perform the following actions:
+          <ol>
+            <li>Check to see if there are any missing cases in the data. Explain your findings.</li>
+            <li>Get all data petraining to the state of Texas and assign it to an object.</li>
+            <li>Using your new object, find out how many hand guns were sold in January 2004</li>
+            <li>Using your new object, how many permit_rechecks were performed in Texas across the whole period of this dataset?</li>
+            <li>Perform steps 2, 3 and 4 for the state of California</li>
+          </ol>
+        </section>
+
+          <section>
+            <h3>
+              Descriptives
+            </h3>
+          </section>
+
+          <section>
+            <h3>
+              Project 1: Prep that data!
+            </h3>
+            <p>
+              This project is designed to mimic the process of wrangling with your own data.
+              It uses actual data from the European Union Open Data Portal and concerns the numbers of accidents at work across the EU.
+            </p>
+            <p>
+              Naturally, the first step is to acquire the data, it can be found <a href='http://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing?file=data/hsw_ph3_07.tsv.gz&unzip=true'>here</a>, save it as a .csv file in a sensible directory.
+            </p>
+            <p>
+              See the next slide for further details...
+            </p>
+
+            <aside class='notes'>
+
+            </aside>
+          </section>
+
+          <section>
+            <h3>
+              Project 1: Prep that data!
+            </h3>
+            <ol>
+              <li>Import the data into R</li>
+              <li>Reshape the data into a wide data format</li>
+              <li>What was the number of accidents in the UK?</li>
+            </ol>
+
+            <aside class='notes'>
+
+            </aside>
+          </section>
+
+          <aside class='notes'>
+            <pre><code class='r'>library(reshape2,tidyr)
 eu_data_comma <- read.table('http://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing?file=data/hsw_ph3_07.tsv.gz&unzip=true',sep=',',T)
 eu_data_tab <- read.table('http://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing?file=data/hsw_ph3_07.tsv.gz&unzip=true',sep='\t',T)
 eu_data <- cbind(eu_data_comma[1:6],eu_data_tab[2:length(eu_data_tab)])
@@ -1789,171 +1829,171 @@ eu_unit <- spread(eu_country, key = unit, value = value)
 
       </aside>
 
-          <section>
-            <h3>
-              Project 2: Leeds Car accidents 2015
-            </h3>
-            <p>
-              The data for this project were published by Leeds City Council and can be found <a href='https://aql.datapress.com/leeds/dataset/road-traffic-accidents/2016-05-19T15:30:50/2015.csv'>here</a>
-            </p>
-          </section>
-
-          <section>
-          </section
-          </section>
-
-
-
-            <!--    NEW TOP LEVEL SLIDE      -->
-            <section align='left'>
-
-              <section>
-                <h2 align='center'>
-                  Next Week
-                </h2>
-                <aside class='notes'>
-
-                </aside>
-              </section>
-
-              <section>
-                <aside class='notes'>
-
-                </aside>
-              </section>
-
-              <section>
-                <aside class='notes'>
-
-                </aside>
-              </section>
-
-              <section>
-
-                <aside class='notes'>
-
-                </aside>
-              </section>
-
+            <section>
+              <h3>
+                Project 2: Leeds Car accidents 2015
+              </h3>
+              <p>
+                The data for this project were published by Leeds City Council and can be found <a href='https://aql.datapress.com/leeds/dataset/road-traffic-accidents/2016-05-19T15:30:50/2015.csv'>here</a>
+              </p>
             </section>
 
+            <section>
+            </section
+            </section>
+
+
+
+              <!--    NEW TOP LEVEL SLIDE      -->
+              <section align='left'>
+
+                <section>
+                  <h2 align='center'>
+                    Next Week
+                  </h2>
+                  <aside class='notes'>
+
+                  </aside>
+                </section>
+
+                <section>
+                  <aside class='notes'>
+
+                  </aside>
+                </section>
+
+                <section>
+                  <aside class='notes'>
+
+                  </aside>
+                </section>
+
+                <section>
+
+                  <aside class='notes'>
+
+                  </aside>
+                </section>
+
+              </section>
+
+              </div>
             </div>
-          </div>
 
-        <script src="lib/js/head.min.js"></script>
-        <script src="js/reveal.js"></script>
+          <script src="lib/js/head.min.js"></script>
+          <script src="js/reveal.js"></script>
 
-        <script>
-          // More info https://github.com/hakimel/reveal.js#configuration
-          Reveal.initialize({
-            height:800,
-            width:960,
-            margin: 0.1,
-            minScale: 0.2,
-            maxScale:1.5,
-            // Display controls in the bottom right corner
-            controls: true,
+          <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+              height:800,
+              width:960,
+              margin: 0.1,
+              minScale: 0.2,
+              maxScale:1.5,
+              // Display controls in the bottom right corner
+              controls: true,
 
-            // Display a presentation progress bar
-            progress: true,
+              // Display a presentation progress bar
+              progress: true,
 
-            // Display the page number of the current slide
-            slideNumber: false,
+              // Display the page number of the current slide
+              slideNumber: false,
 
-            // Push each slide change to the browser history
-            history: true,
+              // Push each slide change to the browser history
+              history: true,
 
-            // Enable keyboard shortcuts for navigation
-            keyboard: true,
+              // Enable keyboard shortcuts for navigation
+              keyboard: true,
 
-            // Enable the slide overview mode
-            overview: true,
+              // Enable the slide overview mode
+              overview: true,
 
-            // Vertical centering of slides
-            center: true,
+              // Vertical centering of slides
+              center: true,
 
-            // Enables touch navigation on devices with touch input
-            touch: true,
+              // Enables touch navigation on devices with touch input
+              touch: true,
 
-            // Loop the presentation
-            loop: false,
+              // Loop the presentation
+              loop: false,
 
-            // Change the presentation direction to be RTL
-            rtl: false,
+              // Change the presentation direction to be RTL
+              rtl: false,
 
-            // Randomizes the order of slides each time the presentation loads
-            shuffle: false,
+              // Randomizes the order of slides each time the presentation loads
+              shuffle: false,
 
-            // Turns fragments on and off globally
-            fragments: true,
+              // Turns fragments on and off globally
+              fragments: true,
 
-            // Flags if the presentation is running in an embedded mode,
-            // i.e. contained within a limited portion of the screen
-            embedded: false,
+              // Flags if the presentation is running in an embedded mode,
+              // i.e. contained within a limited portion of the screen
+              embedded: false,
 
-            // Flags if we should show a help overlay when the questionmark
-            // key is pressed
-            help: true,
+              // Flags if we should show a help overlay when the questionmark
+              // key is pressed
+              help: true,
 
-            // Flags if speaker notes should be visible to all viewers
-            showNotes: false,
+              // Flags if speaker notes should be visible to all viewers
+              showNotes: false,
 
-            // Number of milliseconds between automatically proceeding to the
-            // next slide, disabled when set to 0, this value can be overwritten
-            // by using a data-autoslide attribute on your slides
-            autoSlide: 0,
+              // Number of milliseconds between automatically proceeding to the
+              // next slide, disabled when set to 0, this value can be overwritten
+              // by using a data-autoslide attribute on your slides
+              autoSlide: 0,
 
-            // Stop auto-sliding after user input
-            autoSlideStoppable: true,
+              // Stop auto-sliding after user input
+              autoSlideStoppable: true,
 
-            // Use this method for navigation when auto-sliding
-            autoSlideMethod: Reveal.navigateNext,
+              // Use this method for navigation when auto-sliding
+              autoSlideMethod: Reveal.navigateNext,
 
-            // Enable slide navigation via mouse wheel
-            mouseWheel: false,
+              // Enable slide navigation via mouse wheel
+              mouseWheel: false,
 
-            // Hides the address bar on mobile devices
-            hideAddressBar: true,
+              // Hides the address bar on mobile devices
+              hideAddressBar: true,
 
-            // Opens links in an iframe preview overlay
-            previewLinks: false,
+              // Opens links in an iframe preview overlay
+              previewLinks: false,
 
-            // Transition style
-            transition: 'concave', // none/fade/slide/convex/concave/zoom
+              // Transition style
+              transition: 'concave', // none/fade/slide/convex/concave/zoom
 
-            // Transition speed
-            transitionSpeed: 'default', // default/fast/slow
+              // Transition speed
+              transitionSpeed: 'default', // default/fast/slow
 
-            // Transition style for full page slide backgrounds
-            backgroundTransition: 'concave', // none/fade/slide/convex/concave/zoom
+              // Transition style for full page slide backgrounds
+              backgroundTransition: 'concave', // none/fade/slide/convex/concave/zoom
 
-            // Number of slides away from the current that are visible
-            viewDistance: 3,
+              // Number of slides away from the current that are visible
+              viewDistance: 3,
 
-            // Parallax background image
-            parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+              // Parallax background image
+              parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
 
-            // Parallax background size
-            parallaxBackgroundSize: '', // CSS syntax, e.g. "2100px 900px"
+              // Parallax background size
+              parallaxBackgroundSize: '', // CSS syntax, e.g. "2100px 900px"
 
-            // Number of pixels to move the parallax background per slide
-            // - Calculated automatically unless specified
-            // - Set to 0 to disable movement along an axis
-            parallaxBackgroundHorizontal: null,
-            parallaxBackgroundVertical: null,
+              // Number of pixels to move the parallax background per slide
+              // - Calculated automatically unless specified
+              // - Set to 0 to disable movement along an axis
+              parallaxBackgroundHorizontal: null,
+              parallaxBackgroundVertical: null,
 
-            // More info https://github.com/hakimel/reveal.js#dependencies
-            dependencies: [
-              { src: 'lib/js/classList.js', condition: function ()
-               { return !document.body.classList;}},
-              { src: 'plugin/markdown/marked.js' },
-              { src: 'plugin/markdown/markdown.js' },
-              { src: 'plugin/notes/notes.js', async: true },
-              { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
-              { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-            ]
-          });
-          Reveal.configure({ pdfMaxPagesPerSlide: 1 });
-        </script>
-        </body>
-      </html>
+              // More info https://github.com/hakimel/reveal.js#dependencies
+              dependencies: [
+                { src: 'lib/js/classList.js', condition: function ()
+                 { return !document.body.classList;}},
+                { src: 'plugin/markdown/marked.js' },
+                { src: 'plugin/markdown/markdown.js' },
+                { src: 'plugin/notes/notes.js', async: true },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+              ]
+            });
+            Reveal.configure({ pdfMaxPagesPerSlide: 1 });
+          </script>
+          </body>
+        </html>

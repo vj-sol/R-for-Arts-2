@@ -746,8 +746,8 @@ reshape2
           Navigating Data
         </h3>
         After importing data using <pre style='display:inline'><code class='r' style='display:inline'>read.table()</code></pre> or <pre style='display:inline'><code class='r' style='display:inline'>read.csv()</code></pre> the data are stored as a <pre style='display:inline'><code class='r' style='display:inline'>data.frame</code></pre>
-        <pre><code class='r'>demo_cats <- read.csv( 'cats.csv' , header = TRUE )
-class(demo_cats)
+        <pre><code class='r'>cats_demo <- read.csv( 'cats.csv' , header = TRUE )
+class(cats_demo)
 #[1] "data.frame"</code></pre>
 <div class='fragment'>
 Recall from session 1 that a <pre style='display:inline'><code class='r' style='display:inline'>data.frame</code></pre> has 2 dimensions.
@@ -816,7 +816,7 @@ However, vectors only have 1 dimension and the data the we have imported has 2 d
               If we wanted to know if Prof. Jiggly is loose in the cat room, we would need the information contained in row 3, column 5.
               This is coded as so:
             </p>
-            <pre><code class='r'>demo_cats[4,5]
+            <pre><code class='r'>cats_demo[4,5]
 #[1] yes
 #Levels: no yes</code></pre>
             </div>
@@ -2095,3 +2095,4 @@ eu_unit <- spread(eu_country, key = unit, value = value)
           </script>
           </body>
         </html>
+
